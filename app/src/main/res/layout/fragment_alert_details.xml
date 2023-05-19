@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/viewUpper1"
+        android:layout_width="107dp"
+        android:layout_height="123dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibChevron"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Chevron"
+        android:adjustViewBounds="true"
+        android:maxWidth="48dp"
+        android:maxHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewUpper1"
+        app:layout_constraintEnd_toEndOf="@+id/viewUpper1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/icons8_chevron"
+        android:background="#00000000"/>
+
+    <View
+        android:id="@+id/viewUpper2"
+        android:layout_width="304dp"
+        android:layout_height="123dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/viewUpper1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAlertsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_bold"
+        android:text="Alert details"
+        android:textSize="32sp"
+        android:textColor="?android:textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/viewUpper2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/viewCenter"
+        android:layout_width="match_parent"
+        android:layout_height="609dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlertsTitle" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:indeterminateTint="?android:textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/viewCenter"
+        app:layout_constraintEnd_toEndOf="@+id/viewCenter"
+        app:layout_constraintStart_toStartOf="@+id/viewCenter"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/archivo_bold"
+        android:text="Warning"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewCenter"
+        app:layout_constraintTop_toTopOf="@+id/viewCenter" />
+
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_regular"
+        android:text="OCT. 18, 2022; 5:02 PM"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/viewCenter"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvDetails"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/archivo_regular"
+        android:gravity="center"
+        android:text="You have been in close contact
+        with someone displaying symptoms of: COVID-19.
+        Please take care of your own health and wear face mask."
+        android:textColor="?android:textColorPrimary"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/viewCenter"
+        app:layout_constraintStart_toStartOf="@+id/viewCenter"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

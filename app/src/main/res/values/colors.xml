@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="yellow_gold">#FFFFC043</color>
+    <color name="red_maroon">#FFA30000</color>
+    <color name="blue_purple">#FF201C4E</color>
+    <color name="near_black">#09101D</color>
+    <color name="lesser_white">#FFcbbaba</color>
+    <color name="red_orange">#c9550c</color>
+
+    <!--Square Colors-->
+
+    <color name="square_blue">#7682a6</color>
+    <color name="square_bluepurple">#9084a4</color>
+    <color name="square_purple">#7a5691</color>
+
+    <color name="square_blue_d">#201c4e</color>
+    <color name="square_bluepurple_d">#211745</color>
+    <color name="square_purple_d">#2a0e4e</color>
+
+    <color name="square_red">#EBB7B7</color>
+    <color name="square_redorange">#F9B49F</color>
+    <color name="square_orange">#FBCB9F</color>
+
+    <color name="square_red_d">#731111</color>
+    <color name="square_redorange_d">#732311</color>
+    <color name="square_orange_d">#764213</color>
+
+    <!--Gradient colors-->
+
+    <color name="grad_red">#E91212</color>
+    <color name="grad_yellow">#FEC83C</color>
+
+    <color name="grad_blue">#181630</color>
+    <color name="grad_purple">#2b0f4e</color>
+
+    <!--Field colors-->
+    <color name="field_light">#f4f6f9</color>
+    <color name="field_light_shade">#cecece</color>
+
+    <color name="field_dark">#1e1e1e</color>
+    <color name="field_dark_shade">#cbbaba</color>
+</resources>

@@ -1,0 +1,686 @@
+{
+  "name": "iitrace_sign_in_light_theme_update_",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "fEw3N0Z8DUcw5hhjCuTS0M",
+    "node": "331:140",
+    "version": "3215514809",
+    "component-id": "c55f104fcaa719ba51224606802996fea9ecdc30"
+  },
+  "default": "IITrace - sign in (light theme, update)",
+  "documentation": "Login screen (Day theme)",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "Input2"
+      },
+      {
+        "type": "group",
+        "id": "Input1"
+      },
+      {
+        "type": "group",
+        "id": "Navigation Bars"
+      },
+      {
+        "type": "group",
+        "id": "LargeButton2"
+      },
+      {
+        "type": "text",
+        "id": "no acc yet"
+      },
+      {
+        "type": "text",
+        "id": "or"
+      },
+      {
+        "type": "group",
+        "id": "LargeButton1"
+      },
+      {
+        "type": "text",
+        "id": "password"
+      },
+      {
+        "type": "text",
+        "id": "username"
+      },
+      {
+        "type": "text",
+        "id": "Title"
+      },
+      {
+        "type": "group",
+        "id": "Master2"
+      },
+      {
+        "type": "group",
+        "id": "myiit"
+      },
+      {
+        "type": "group",
+        "id": "labelonly2"
+      },
+      {
+        "type": "group",
+        "id": "placeholder"
+      },
+      {
+        "type": "text",
+        "id": "Label"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "group",
+        "id": "Master1"
+      },
+      {
+        "type": "group",
+        "id": "continue"
+      },
+      {
+        "type": "group",
+        "id": "labelonly"
+      },
+      {
+        "type": "text",
+        "id": "LabelContinue"
+      }
+    ],
+    "modes": {
+      "IITrace - sign in (light theme, update)": {
+        "rules": [
+          {
+            "id": "top_level",
+            "border-radius": "30.0",
+            "is-structured": "false",
+            "children": [
+              "Input2",
+              "Input1",
+              "Navigation Bars",
+              "LargeButton2",
+              "no acc yet",
+              "or",
+              "LargeButton1"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            }
+          },
+          {
+            "id": "Input2",
+            "padding": {
+              "left": "16.0",
+              "right": "20.0"
+            },
+            "margin": {
+              "left": "16.0",
+              "top": "333.0",
+              "right": "16.0",
+              "bottom": "423.0"
+            },
+            "border-radius": "15.0",
+            "stroke-width": "1.0",
+            "stroke-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.11764705882352941"
+            },
+            "cross-axis-align": "start",
+            "children": [
+              "password"
+            ]
+          },
+          {
+            "id": "Input1",
+            "padding": {
+              "left": "16.0",
+              "right": "20.0"
+            },
+            "border-radius": "15.0",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "252.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "343.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "56.0"
+              }
+            },
+            "stroke-width": "1.0",
+            "stroke-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.11764705882352941"
+            },
+            "cross-axis-align": "start",
+            "children": [
+              "username"
+            ]
+          },
+          {
+            "id": "Navigation Bars",
+            "padding": {
+              "left": "16.0",
+              "right": "16.0",
+              "bottom": "10.0"
+            },
+            "margin": {
+              "left": "5.0",
+              "right": "1.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "134.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "cross-axis-align": "start",
+            "children": [
+              "Title"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "LargeButton2",
+            "padding": {
+              "top": "5.0",
+              "bottom": "5.0"
+            },
+            "margin": {
+              "left": "5.0",
+              "right": "5.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "541.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "Master2"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "no acc yet",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "-0.5"
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": "216.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "374.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "219.0",
+              "saturation": "0.6896551724137931",
+              "value": "0.11372549019607843"
+            },
+            "annotated-text-content": {
+              "text": "No myIIT account yet? Sign up",
+              "annotated-text-span-list": [
+                {
+                  "span-start": "0",
+                  "span-length": "22"
+                },
+                {
+                  "span-start": "22",
+                  "span-length": "7",
+                  "annotated-text-style": {
+                    "font-weight": "600.0",
+                    "text-size": "13.0",
+                    "letter-spacing": "0.0",
+                    "line-height": "1.4",
+                    "typeface": "Archivo",
+                    "color": {
+                      "alpha": "1.0",
+                      "hue": "0.0",
+                      "saturation": "1.0",
+                      "value": "0.6392156862745098"
+                    }
+                  }
+                }
+              ]
+            },
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align-vertical": "center",
+            "text-size": "13.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "or",
+            "margin": {
+              "left": "16.0",
+              "top": "513.0",
+              "right": "16.0",
+              "bottom": "281.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              }
+            },
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "219.0",
+              "saturation": "0.6896551724137931",
+              "value": "0.11372549019607843"
+            },
+            "text-content": "or",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align-vertical": "center",
+            "text-size": "13.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "LargeButton1",
+            "padding": {
+              "top": "10.0",
+              "bottom": "10.0"
+            },
+            "margin": {
+              "left": "5.0",
+              "right": "5.0"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": "437.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "Master1"
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "password",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Enter your password",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": "16.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "username",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.0"
+            },
+            "text-content": "Enter your username",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": "16.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "Title",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": "700.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "219.0",
+              "saturation": "0.6896551724137931",
+              "value": "0.11372549019607843"
+            },
+            "text-content": "Sign in",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-size": "32.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "Master2",
+            "padding": {
+              "left": "16.0",
+              "right": "16.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "myiit"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "myiit",
+            "padding": {
+              "left": "16.0",
+              "top": "10.0",
+              "right": "16.0",
+              "bottom": "10.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "52.0"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "space-between",
+            "children": [
+              "labelonly2"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "1.0",
+              "value": "0.6392156862745098"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "labelonly2",
+            "padding": {
+              "left": "10.0",
+              "right": "10.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "children": [
+              "placeholder",
+              "Label"
+            ],
+            "item-spacing": "8.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "placeholder",
+            "padding": "2.0",
+            "border-radius": "100.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "24.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "24.0"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "Vector"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "Label",
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "1.0"
+            },
+            "text-content": "Continue with myIIT",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": "15.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          },
+          {
+            "id": "Vector",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "19.60546875"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "20.004150390625"
+              }
+            },
+            "vector-content": "vector.svg"
+          },
+          {
+            "id": "Master1",
+            "padding": {
+              "left": "16.0",
+              "right": "16.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "continue"
+            ],
+            "item-spacing": "10.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "continue",
+            "padding": {
+              "left": "16.0",
+              "top": "10.0",
+              "right": "16.0",
+              "bottom": "10.0"
+            },
+            "border-radius": "15.0",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": "52.0"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "space-between",
+            "children": [
+              "labelonly"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "39.89361702127659",
+              "saturation": "0.7372549019607844",
+              "value": "1.0"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "labelonly",
+            "padding": {
+              "left": "10.0",
+              "right": "10.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "main-axis-align": "start",
+            "children": [
+              "LabelContinue"
+            ],
+            "item-spacing": "8.0",
+            "clip-content": "false"
+          },
+          {
+            "id": "LabelContinue",
+            "font-weight": "600.0",
+            "color": {
+              "alpha": "1.0",
+              "hue": "219.0",
+              "saturation": "0.6896551724137931",
+              "value": "0.11372549019607843"
+            },
+            "text-content": "Continue",
+            "overflow": "visible",
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": "16.0",
+            "line-height": "1.4",
+            "typeface": "Archivo"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "IITrace - sign in (light theme, update)",
+      "size": {
+        "width": 375.0,
+        "height": 812.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}
