@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.todolist"
+        applicationId "com.example.iitrace"
         minSdk 21
         targetSdk 32
         versionCode 1
