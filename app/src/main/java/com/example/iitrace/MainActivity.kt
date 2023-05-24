@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
 
-        val token = SessionManager.getToken(this)
+        val token = SessionManager.getToken(applicationContext)
         if (!token.isNullOrBlank()) {
             val intent = Intent(this, HomeActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -101,19 +101,19 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Login successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.token.isNullOrEmpty()) {
                         data?.data?.token?.let {
-                            SessionManager.saveAuthToken(this, it)
+                            SessionManager.saveAuthToken(applicationContext, it)
                         }
 
                         data?.data?.user_data?.id?.let {
-                            SessionManager.saveUserData(this, "id", it)
+                            SessionManager.saveUserData(applicationContext, "id", it)
                         }
 
                         data?.data?.user_data?.username?.let {
-                            SessionManager.saveUserData(this, "username", it)
+                            SessionManager.saveUserData(applicationContext, "username", it)
                         }
 
                         data?.data?.user_data?.email?.let {
-                            SessionManager.saveUserData(this, "email", it)
+                            SessionManager.saveUserData(applicationContext, "email", it)
                         }
                     }
 

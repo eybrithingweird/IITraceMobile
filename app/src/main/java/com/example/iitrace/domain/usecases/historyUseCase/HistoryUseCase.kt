@@ -1,10 +1,7 @@
 package com.example.iitrace.domain.usecases.historyUseCase
 
 import com.example.iitrace.domain.repository.IITraceRepository
-import com.example.iitrace.network.data.requests.HistoryRequest
-import com.example.iitrace.network.data.requests.LoginRequest
 import com.example.iitrace.network.data.responses.HistoryResponse
-import com.example.iitrace.network.data.responses.LoginResponse
 import com.example.iitrace.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +10,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 class HistoryUseCase @Inject constructor(private val repository: IITraceRepository){
-    operator fun invoke(request: HistoryRequest): Flow<Resource<HistoryResponse>> = flow {
+    operator fun invoke(request: Map<String, String>): Flow<Resource<ArrayList<HistoryResponse>>> = flow {
         try {
             emit(Resource.Loading())
             val response = repository.history(request)

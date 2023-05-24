@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -18,7 +19,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
 
-        val token = SessionManager.getToken(this)
+        val token = SessionManager.getToken(applicationContext)
+        Log.d("Token", "$token")
         if (token.isNullOrBlank()) {
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -26,9 +28,9 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val usernameData = SessionManager.getUsernameData(this)
-        val idData = SessionManager.getIdData(this)
-        val emailData = SessionManager.getEmailData(this)
+        val usernameData = SessionManager.getUsernameData(applicationContext)
+        val idData = SessionManager.getIdData(applicationContext)
+        val emailData = SessionManager.getEmailData(applicationContext)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_day)
@@ -138,7 +140,7 @@ class HomeActivity : AppCompatActivity() {
 
             imageField1.setImageResource(R.drawable.moonandstars3)
             imageField2.setImageResource(R.drawable.starsonly)
-            greetingField.text = "Good evening, user!"
+            greetingField.text = "Good evening, $usernameData!"
         }
 
         scanQR.setOnClickListener {
@@ -162,7 +164,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         signOut.setOnClickListener {
-            SessionManager.clearData(this)
+            SessionManager.clearData(applicationContext)
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)

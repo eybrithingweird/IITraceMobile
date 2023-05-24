@@ -89,14 +89,8 @@ class ApplicationModule {
             }
         }
 
-        // creating an SSLSocketFactory that uses our TrustManager + verify host IP
-//        HttpsURLConnection.setDefaultHostnameVerifier(NullHostNameVerifier())
         val sslContext = SSLContext.getInstance("TLS")
         sslContext.init(null, tmf.trustManagers, null)
-//        HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.socketFactory)
-
-//        val sslContext = SSLContext.getInstance("TLS")
-//        sslContext.init(keyManagerFactory.keyManagers, null, SecureRandom())
 
         val trustManagerFactory: TrustManagerFactory =
             TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())

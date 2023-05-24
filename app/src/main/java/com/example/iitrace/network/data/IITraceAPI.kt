@@ -1,13 +1,14 @@
 package com.example.iitrace.network.data
 
-import com.example.iitrace.network.data.requests.HistoryRequest
-import com.example.iitrace.network.data.responses.HistoryResponse
 import com.example.iitrace.network.data.requests.LoginRequest
 import com.example.iitrace.network.data.requests.ScanQRRequest
+import com.example.iitrace.network.data.responses.HistoryResponse
 import com.example.iitrace.network.data.responses.LoginResponse
 import com.example.iitrace.network.data.responses.ScanQRResponse
-import retrofit2.http.Body
-import retrofit2.http.POST
+import com.google.gson.Gson
+import retrofit2.Callback
+import retrofit2.http.*
+
 
 interface IITraceAPI {
     companion object{
@@ -22,7 +23,17 @@ interface IITraceAPI {
     @POST(SCANS)
     suspend fun scans(@Body scanRequest: ScanQRRequest): ScanQRResponse
 
-    @POST(HISTORY)
-    suspend fun history(@Body historyRequest: HistoryRequest): HistoryResponse
+    @GET(HISTORY)
+    suspend fun history(@HeaderMap header: Map<String, String>): ArrayList<HistoryResponse>
+//    suspend fun history(
+//        @Header("Authentication") token: String?,
+//    ): Call<HistoryInfo?>?
+
+
+//    fun getHistoryEntries(token: String?, callback: Callback<HistoryInfo>?) {
+//        val historyEntries: Call<HistoryInfo> =
+//            service.getHistoryEntries(token)
+//        historyEntries.enqueue(callback)
+//    }
 
 }

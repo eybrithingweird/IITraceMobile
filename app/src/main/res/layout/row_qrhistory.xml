@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/llFieldMain"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp">
+
+    <RelativeLayout
+        android:id="@+id/rlField"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/ivField1"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/field_withbottom_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivCollegeLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ivField1"
+            android:layout_alignTop="@+id/ivField1"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="College logo"
+            android:maxWidth="70dp"
+            android:maxHeight="70dp"
+            app:srcCompat="@drawable/ccs_logo" />
+
+        <TextView
+            android:id="@+id/tvListDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivField1"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@+id/ivCollegeLogo"
+            android:fontFamily="@font/archivo_bold"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/ivCollegeLogo"
+            app:layout_constraintTop_toTopOf="@+id/ivField1" />
+
+        <TextView
+            android:id="@+id/tvListTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvListDate"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="2dp"
+            android:layout_toEndOf="@+id/ivCollegeLogo"
+            android:fontFamily="@font/archivo_regular"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/ivCollegeLogo"
+            app:layout_constraintTop_toBottomOf="@+id/tvListDate" />
+
+        <TextView
+            android:id="@+id/tvListBuilding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ivField1"
+            android:layout_alignEnd="@+id/ivField1"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/archivo_semibold"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivField1"
+            app:layout_constraintTop_toTopOf="@+id/ivField1" />
+
+        <TextView
+            android:id="@+id/tvListRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvListBuilding"
+            android:layout_alignEnd="@+id/ivField1"
+            android:layout_alignBottom="@+id/ivField1"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="21dp"
+            android:fontFamily="@font/archivo_regular"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivField1"
+            app:layout_constraintTop_toBottomOf="@+id/tvListBuilding" />
+
+        <TextView
+            android:id="@+id/tvListTimeEntered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivCollegeLogo"
+            android:layout_alignStart="@+id/ivField1"
+            android:layout_alignBottom="@+id/ivField1"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/archivo_regular"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivField1"
+            app:layout_constraintTop_toBottomOf="@+id/tvListBuilding" />
+
+        <TextView
+            android:id="@+id/tvListTimeExited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivCollegeLogo"
+            android:layout_alignEnd="@+id/ivField1"
+            android:layout_alignBottom="@+id/ivField1"
+            android:layout_marginTop="9dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/archivo_regular"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/ivField1"
+            app:layout_constraintTop_toBottomOf="@+id/tvListBuilding" />
+
+    </RelativeLayout>
+
+</LinearLayout>

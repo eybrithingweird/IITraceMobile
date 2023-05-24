@@ -5,9 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.iitrace.domain.usecases.loginUseCase.LoginUseCase
-import com.example.iitrace.domain.usecases.scanQRUseCase.ScanQRUseCase
 import com.example.iitrace.domain.usecases.historyUseCase.HistoryUseCase
-import com.example.iitrace.network.data.requests.HistoryRequest
 import com.example.iitrace.network.data.requests.LoginRequest
 import com.example.iitrace.util.Resource
 import com.example.iitrace.view.authentication.HistoryState
@@ -54,8 +52,8 @@ class IITraceViewModel @Inject constructor(
     val _historyState: MutableLiveData<HistoryState>
         get() = historyState
 
-    fun history(historyRequest: HistoryRequest){
-        historyUseCase(historyRequest).onEach { result ->
+    fun history(tokenString: Map<String, String>){
+        historyUseCase(tokenString).onEach { result ->
             when(result){
                 is Resource.Success<*> ->{
                     historyState.value = HistoryState(data = result.data)
