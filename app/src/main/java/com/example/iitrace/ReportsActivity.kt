@@ -4,7 +4,12 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,34 +17,41 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.contacts.QRListAdapter
+import com.example.contacts.ReportsListAdapter
 import com.example.iitrace.network.data.responses.HistoryResponse
+import com.example.iitrace.network.data.responses.ReportsResponse
 import com.example.iitrace.viewmodel.IITraceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
-
 @AndroidEntryPoint
-class QRHistoryActivity  : AppCompatActivity() {
+class ReportsActivity : AppCompatActivity() {
     private val iitraceViewModel: IITraceViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
-        val token = SessionManager.getToken(applicationContext)
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.qr_history)
+        setContentView(R.layout.reports)
+
+        val token = SessionManager.getToken(applicationContext)
 
         fun getHeaderMap(): Map<String, String> {
             return mapOf("Authorization" to "Token $token")
         }
 
-        iitraceViewModel.history(getHeaderMap())
-        observeHistory()
+        iitraceViewModel.reports(getHeaderMap())
+        observeReports()
 
-//        val loadingBar = findViewById<ProgressBar>(R.id.pbHistory)
+        val chevron = findViewById<ImageButton>(R.id.ibChevron)
+        val bttn = findViewById<Button>(R.id.bttnCreateReport)
         val c: Calendar = Calendar.getInstance()
         val timeOfDay: Int = c.get(Calendar.HOUR_OF_DAY)
-        val chevron = findViewById<ImageButton>(R.id.ibChevron)
+
+        if (timeOfDay < 18) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
+        } else if (timeOfDay > 18 || timeOfDay == 18) {
+            window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
+        }
 
         fun nightModeSet() {
             chevron.setImageResource(R.drawable.icons8_chevron_w)
@@ -55,16 +67,10 @@ class QRHistoryActivity  : AppCompatActivity() {
             Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
         }
 
-        if (timeOfDay < 18) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
-        } else if (timeOfDay > 18 || timeOfDay == 18) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
-        }
-
         val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewCenter)
         pullToRefresh.setOnRefreshListener {
             iitraceViewModel.history(getHeaderMap())
-            observeHistory()
+            observeReports()
             pullToRefresh.isRefreshing = false
         }
 
@@ -73,11 +79,17 @@ class QRHistoryActivity  : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        bttn.setOnClickListener {
+            val intent = Intent(this, ReportsWarningActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
-    private fun observeHistory() {
-        iitraceViewModel._historyState.observe(this) { data ->
-            val loadingBar = findViewById<ProgressBar>(R.id.pbHistory)
+    private fun observeReports() {
+        iitraceViewModel._reportsState.observe(this) { data ->
+            val loadingBar = findViewById<ProgressBar>(R.id.pbReports)
             val textViewNull = findViewById<TextView>(R.id.tvNull)
             when {
                 data.isLoading -> {
@@ -86,24 +98,24 @@ class QRHistoryActivity  : AppCompatActivity() {
                 data.data != null -> {
                     loadingBar.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@QRHistoryActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@ReportsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.isEmpty()!!) {
-                        val rvHistory = findViewById<View>(R.id.recycler_view) as RecyclerView
-                        val historyArr: ArrayList<HistoryResponse> = data.data!!
-                        val adapter = QRListAdapter(historyArr)
-                        rvHistory.adapter = adapter
-                        rvHistory.layoutManager = LinearLayoutManager(this)
-                        (rvHistory.layoutManager as LinearLayoutManager).reverseLayout = true
-                        (rvHistory.layoutManager as LinearLayoutManager).stackFromEnd = true
-                        rvHistory.setHasFixedSize(true)
-                        rvHistory.scrollToPosition(0)
+                        val rvReports = findViewById<View>(R.id.recycler_view) as RecyclerView
+                        val reportsArr: ArrayList<ReportsResponse> = data.data!!
+                        val adapter = ReportsListAdapter(reportsArr)
+                        rvReports.adapter = adapter
+                        rvReports.layoutManager = LinearLayoutManager(this)
+                        (rvReports.layoutManager as LinearLayoutManager).reverseLayout = true
+                        (rvReports.layoutManager as LinearLayoutManager).stackFromEnd = true
+                        rvReports.setHasFixedSize(true)
+                        rvReports.scrollToPosition(0)
                     } else {
                         textViewNull.visibility = View.VISIBLE
                     }
                 }
                 else -> {
                     loadingBar.visibility = View.INVISIBLE
-//                    Toast.makeText(this@QRHistoryActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@ReportsActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
                     textViewNull.visibility = View.VISIBLE
                     textViewNull.text = "Failure: ${data.error}"
                 }

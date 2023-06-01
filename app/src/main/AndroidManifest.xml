@@ -21,6 +21,11 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.MaterialComponents.DayNight" >
+
+<!--        <meta-data-->
+<!--            android:name="com.google.android.gms.vision.DEPENDENCIES"-->
+<!--            android:value="barcode" />-->
+
         <activity
             android:name=".view.SplashActivity"
             android:exported="true" >
@@ -32,18 +37,22 @@
         </activity>
         <activity
             android:name="com.example.iitrace.MainActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".HomeActivity" android:launchMode="singleTop" />
         <activity android:name=".ScanQRActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".QRHistoryActivity" />
         <activity android:name=".AlertsActivity"/>
+        <activity android:name=".ReportsActivity"/>
+        <activity android:name=".ReportsCreateActivity"/>
+        <activity android:name=".ReportsWarningActivity" android:launchMode="singleTop"/>
     </application>
 
 </manifest>

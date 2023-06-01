@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -13,6 +12,8 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_square_purple.xml" value="0.2545" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_square_red.xml" value="0.2555" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_square_redorange.xml" value="0.2555" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_theme.xml" value="0.171" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_theme_red.xml" value="0.17" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/button_withbottom.xml" value="0.166" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/field_transparent.xml" value="0.143" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/drawable/field_withbottom.xml" value="0.163" />
@@ -31,10 +32,13 @@
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/fragment_alert_details.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/fragment_qrhistory_details.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/fragment_qrhistory_list.xml" value="0.24895833333333334" />
-        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/home_day.xml" value="0.4" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/home_adjust.xml" value="0.16" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/home_day.xml" value="0.264" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/home_night.xml" value="0.2" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/list_item.xml" value="0.1546875" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/profile.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/qr_history.xml" value="0.2" />
+        <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/reports.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/row_qrhistory.xml" value="0.25" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/row_qrhistory_dark.xml" value="0.24895833333333334" />
         <entry key="..\:/Users/HP/AndroidStudioProjects/IITrace/app/src/main/res/layout/scan_qr.xml" value="0.2" />
@@ -57,7 +61,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

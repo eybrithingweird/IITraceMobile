@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutScroll"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <View
+                android:id="@+id/viewBanner"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="-200dp"
+                android:background="@drawable/grad_redyellow_circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/viewStarter"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" >
+
+                <ImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="0dp"
+                    app:srcCompat="@drawable/icons8_profile"
+                    app:tint="?android:textColorPrimary" />
+
+                <TextView
+                    android:id="@+id/tvLoggedIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/ivProfile"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/archivo_regular"
+                    android:textColor="?android:textColorPrimary"
+                    android:gravity="center"
+                    android:text="Logged in as user"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivHeader"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:contentDescription="Sun and clouds"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:layout_marginBottom="-40dp"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/viewBanner"-->
+<!--                app:srcCompat="@drawable/sunandcloud2" />-->
+
+            <RelativeLayout
+                android:id="@+id/rlFirstRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintTop_toBottomOf="@+id/viewBanner"
+                tools:ignore="MissingConstraints"
+                android:gravity="center_horizontal" >
+
+                <Button
+                    android:id="@+id/bttnScanQR"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="Scan QR"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivScanQR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignStart="@+id/bttnScanQR"
+                    android:layout_alignTop="@+id/bttnScanQR"
+                    android:layout_alignEnd="@+id/bttnScanQR"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Scan QR"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:src="@drawable/icons8_qrcode"
+                    app:tint="?android:textColorPrimary" />
+
+                <Button
+                    android:id="@+id/bttnQRhistory"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_toRightOf="@+id/bttnScanQR"
+                    android:layout_marginStart="50dp"
+                    android:layout_toEndOf="@+id/bttnScanQR"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="QR History"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivClock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/bttnScanQR"
+                    android:layout_alignStart="@+id/bttnQRhistory"
+                    android:layout_alignEnd="@+id/bttnQRhistory"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="QR History"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icons8_history"
+                    app:layout_constraintEnd_toEndOf="@+id/bttnQRhistory"
+                    app:layout_constraintStart_toStartOf="@+id/bttnQRhistory"
+                    app:layout_constraintTop_toTopOf="@+id/bttnQRhistory"
+                    app:tint="?android:textColorPrimary" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlSecondRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/rlFirstRow" >
+
+                <Button
+                    android:id="@+id/bttnAlerthistory"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="Alerts"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivAlert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bttnAlerthistory"
+                    android:layout_alignTop="@+id/bttnAlerthistory"
+                    android:layout_alignEnd="@+id/bttnAlerthistory"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Alert history"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:src="@drawable/icons8_alert"
+                    app:tint="?android:textColorPrimary" />
+
+                <Button
+                    android:id="@+id/bttnReports"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="56dp"
+                    android:layout_toEndOf="@+id/bttnAlerthistory"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="Reports"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivReports"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bttnReports"
+                    android:layout_alignEnd="@+id/bttnReports"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Reports"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icons8_plus"
+                    app:layout_constraintEnd_toEndOf="@+id/bttnReports"
+                    app:layout_constraintStart_toStartOf="@+id/bttnReports"
+                    app:layout_constraintTop_toTopOf="@+id/bttnReports"
+                    app:tint="?android:textColorPrimary" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlThirdRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/rlSecondRow" >
+
+                <Button
+                    android:id="@+id/bttnSettings"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="Settings"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bttnSettings"
+                    android:layout_alignTop="@+id/bttnSettings"
+                    android:layout_alignEnd="@+id/bttnSettings"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Settings"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:src="@drawable/icons8_settings"
+                    app:tint="?android:textColorPrimary" />
+
+                <Button
+                    android:id="@+id/bttnSignout"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="56dp"
+                    android:layout_toEndOf="@+id/bttnSettings"
+                    android:background="@drawable/button_square_red"
+                    android:fontFamily="@font/archivo_bold"
+                    android:gravity="bottom|center_horizontal"
+                    android:stateListAnimator="@null"
+                    android:text="Sign out"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivSignout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/bttnSignout"
+                    android:layout_alignEnd="@+id/bttnSignout"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="18dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="Sign out"
+                    android:maxWidth="72dp"
+                    android:maxHeight="72dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icons8_power"
+                    app:layout_constraintEnd_toEndOf="@+id/bttnSignout"
+                    app:layout_constraintStart_toStartOf="@+id/bttnSignout"
+                    app:layout_constraintTop_toTopOf="@+id/bttnSignout"
+                    app:tint="?android:textColorPrimary" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlFourthRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/rlThirdRow" >
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/bttnSurvey"
+                    android:layout_width="280dp"
+                    android:layout_height="60dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_theme"
+                    android:text="Show me to the survey page"
+                    android:textSize="15sp"
+                    android:textColor="#FF000000"
+                    android:fontFamily="@font/archivo_semibold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/viewBottom"
+                android:layout_width="500dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/grad_redyellow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rlFourthRow" />
+
+            <ImageView
+                android:id="@+id/ivFooter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Clouds or stars"
+                android:scaleType="fitEnd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@drawable/cloudonly"
+                app:layout_constraintBottom_toBottomOf="@+id/viewBottom" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</LinearLayout>

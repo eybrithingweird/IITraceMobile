@@ -6,14 +6,17 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.view.SurfaceHolder
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.view.View
+import android.view.WindowManager
 import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.iitrace.databinding.ScanQrBinding
+import com.example.iitrace.network.data.requests.ScanQRRequest
+import com.example.iitrace.viewmodel.IITraceViewModel
 import java.io.IOException
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
@@ -29,8 +32,11 @@ class ScanQRActivity : AppCompatActivity() {
     private var scannedValue = ""
     private lateinit var binding: ScanQrBinding
 
+    private val iitraceViewModel: IITraceViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
+
         super.onCreate(savedInstanceState)
         binding = ScanQrBinding.inflate(layoutInflater)
         val view = binding.root
@@ -108,6 +114,12 @@ class ScanQRActivity : AppCompatActivity() {
 
 
         barcodeDetector.setProcessor(object : Detector.Processor<Barcode> {
+            val token = SessionManager.getToken(applicationContext)
+            val person = SessionManager.getIdData(applicationContext)!!.toInt()
+            fun getHeaderMap(): Map<String, String> {
+                return mapOf("Authorization" to "Token $token")
+            }
+
             override fun release() {
                 Toast.makeText(applicationContext, "Scanner has been closed", Toast.LENGTH_SHORT)
                     .show()
@@ -122,7 +134,10 @@ class ScanQRActivity : AppCompatActivity() {
                     runOnUiThread {
                         cameraSource.stop()
                         Toast.makeText(this@ScanQRActivity, "value- $scannedValue", Toast.LENGTH_SHORT).show()
-                        finish()
+
+                        val scanqrRequest = ScanQRRequest(person, scannedValue)
+                        iitraceViewModel.scans(getHeaderMap(), scanqrRequest)
+                        observeScanQR()
                     }
                 }else
                 {
@@ -159,5 +174,37 @@ class ScanQRActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         cameraSource.stop()
+    }
+
+    private fun observeScanQR() {
+        iitraceViewModel._scanQRState.observe(this) { data ->
+            val loadingBar = findViewById<ProgressBar>(R.id.pbScanning)
+            val fader = findViewById<View>(R.id.viewFaderScan)
+            when {
+                data.isLoading -> {
+                    getWindow().setFlags(
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                    loadingBar.visibility = View.VISIBLE
+                    fader.visibility = View.VISIBLE
+                }
+                data.data != null -> {
+                    loadingBar.visibility = View.INVISIBLE
+                    fader.visibility = View.INVISIBLE
+
+                    Toast.makeText(this@ScanQRActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+                    if (!data?.data?.message?.isEmpty()!!) {
+                        finish()
+                        val intent = Intent(this, QRHistoryActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+                else -> {
+                    loadingBar.visibility = View.INVISIBLE
+                    fader.visibility = View.INVISIBLE
+                    Toast.makeText(this@ScanQRActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 }

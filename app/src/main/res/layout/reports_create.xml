@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <SurfaceView
-        android:id="@+id/cameraSurfaceView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent">
 
     <View
         android:id="@+id/viewUpper1"
@@ -31,7 +22,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewUpper1"
         app:layout_constraintEnd_toEndOf="@+id/viewUpper1"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/icons8_chevron_w"
+        android:src="@drawable/icons8_chevron"
         android:background="#00000000"/>
 
     <View
@@ -43,13 +34,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvScanningTitle"
+        android:id="@+id/tvReportsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_bold"
-        android:text="Scanning..."
+        android:text="Create report"
         android:textSize="30sp"
-        android:textColor="@color/lesser_white"
+        android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/viewUpper2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,37 +52,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvReportsTitle" />
 
-    <!--<View
-        android:id="@+id/barcode_line"
+    <RelativeLayout
+        android:id="@+id/rlFirstLine"
         android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:layout_marginTop="20dp"
-        android:background="#6574fe"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />-->
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="@id/viewCenter"
+        app:layout_constraintTop_toTopOf="@id/viewCenter"
+        app:layout_constraintEnd_toEndOf="@id/viewCenter"
+        android:gravity="center">
 
-    <View
-        android:id="@+id/viewFaderScan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/near_black"
-        android:orientation="horizontal"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        <TextView
+            android:id="@+id/tvProfID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:fontFamily="@font/archivo_bold"
+            android:text="ID number:"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tvProfID"
+            android:fontFamily="@font/archivo_regular"
+            android:layout_marginStart="20dp"
+            android:text="2019-0075"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvProfID" />
+
+    </RelativeLayout>
 
     <ProgressBar
-        android:id="@+id/pbScanning"
+        android:id="@+id/pbCreateReport"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/lesser_white"
+        android:indeterminateTint="?android:textColorPrimary"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

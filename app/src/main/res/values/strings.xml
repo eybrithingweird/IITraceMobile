@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IITrace</string>
+    <string name = "warning_content">
+        By submitting a report, you acknowledge and agree that you are providing truthful and accurate medical information. The act of submitting a report implies your responsibility to ensure the integrity and authenticity of the information provided. Fabricating, exaggerating, or misrepresenting facts in your report is strictly prohibited and may result in serious consequences. We strongly encourage you to exercise utmost honesty, diligence, and ethical conduct when submitting any report. Remember that your reports play a crucial role in maintaining trust, promoting transparency, and facilitating effective decision-making.
+    </string>
+    <string name="warning_agree">I acknowledge and agree to the above statement</string>
 </resources>

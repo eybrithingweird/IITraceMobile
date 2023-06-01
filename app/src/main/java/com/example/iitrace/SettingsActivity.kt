@@ -1,5 +1,6 @@
 package com.example.iitrace
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -49,7 +50,7 @@ class SettingsActivity : AppCompatActivity() {
             Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
         }
 
-        val sharedPreferences = getSharedPreferences("save", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         btn.setOnClickListener {
@@ -58,14 +59,12 @@ class SettingsActivity : AppCompatActivity() {
                 statusMode.text = "Night mode enabled"
                 chevron.setImageResource(R.drawable.icons8_chevron_w)
                 editor.putBoolean("value",true)
-                editor.apply()
                 editor.commit()
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 statusMode.text = "Night mode disabled"
                 chevron.setImageResource(R.drawable.icons8_chevron)
                 editor.putBoolean("value",false)
-                editor.apply()
                 editor.commit()
             }
         }
@@ -73,6 +72,7 @@ class SettingsActivity : AppCompatActivity() {
         chevron.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }

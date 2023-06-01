@@ -34,37 +34,55 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvQRHistoryTitle"
+        android:id="@+id/tvReportsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_bold"
-        android:text="QR history"
+        android:text="Reports"
         android:textSize="30sp"
         android:textColor="?android:textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/viewUpper2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bttnCreateReport"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:background="@drawable/button_theme_2"
+        android:text="Create a report"
+        android:textSize="15sp"
+        android:textColor="#FFFFFFFF"
+        android:fontFamily="@font/archivo_semibold"
+        android:clickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/viewCenter"/>
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/viewCenter"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:layout_marginTop="10dp"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintHeight_max="600dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        app:layout_constrainedHeight="true" >
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -74,7 +92,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_regular"
         android:gravity="center"
-        android:text="No scan history found. \n Scan a QR code and come back later!"
+        android:text="No reports found. \n Submit a report and come back later!"
         android:textColor="?android:textColorPrimary"
         android:textSize="20sp"
         android:visibility="invisible"
@@ -84,7 +102,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
-        android:id="@+id/pbHistory"
+        android:id="@+id/pbReports"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:indeterminateTint="?android:textColorPrimary"

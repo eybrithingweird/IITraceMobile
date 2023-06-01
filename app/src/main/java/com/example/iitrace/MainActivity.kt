@@ -6,12 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.Intent.FLAG_ACTIVITY_NO_HISTORY
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.example.iitrace.network.data.requests.LoginRequest
 import com.example.iitrace.viewmodel.IITraceViewModel
@@ -34,12 +36,34 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
+        val mode = sharedPreferences.getBoolean("value", false)
+        if (mode) { //Night mode = true
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val c: Calendar = Calendar.getInstance()
         val timeOfDay: Int = c.get(Calendar.HOUR_OF_DAY)
         val faderView = findViewById<View>(R.id.viewFader)
+
+        fun nightModeSet(){
+
+        }
+
+        fun dayModeSet() {
+
+        }
+
+        when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> nightModeSet()
+            Configuration.UI_MODE_NIGHT_NO -> dayModeSet()
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
+        }
 
         if (timeOfDay < 18) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
@@ -56,6 +80,7 @@ class MainActivity : AppCompatActivity() {
         password.background = ContextCompat.getDrawable(this, R.drawable.text_input_dark)
 
         val continueClick = findViewById<Button>(R.id.bttnContinue)
+        val iitClick = findViewById<Button>(R.id.bttnMyIIT)
         continueClick.setOnClickListener {
             val user = username.text.toString()
             val pass = password.text.toString()
@@ -71,6 +96,10 @@ class MainActivity : AppCompatActivity() {
             }
 //            val intent = Intent(this, HomeActivity::class.java)
 //            startActivity(intent)
+        }
+
+        iitClick.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Feature not yet available!", Toast.LENGTH_LONG).show()
         }
 
     }

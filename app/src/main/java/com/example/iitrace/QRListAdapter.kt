@@ -25,8 +25,6 @@ class QRListAdapter (
         val textListRoom = itemView.findViewById<TextView>(R.id.tvListRoom)
         val textListTimeEntry = itemView.findViewById<TextView>(R.id.tvListTimeEntered)
         val textListTimeExit = itemView.findViewById<TextView>(R.id.tvListTimeExited)
-
-        val field = itemView.findViewById<ImageView>(R.id.ivField1)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,25 +33,25 @@ class QRListAdapter (
 
         when (context.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
             Configuration.UI_MODE_NIGHT_YES -> {
-                var historyView = inflater.inflate(R.layout.row_qrhistory_dark, parent, false)
+                val historyView = inflater.inflate(R.layout.row_qrhistory_dark, parent, false)
                 return ViewHolder(historyView)
             }
             Configuration.UI_MODE_NIGHT_NO -> {
-                var historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
+                val historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
                 return ViewHolder(historyView)
             }
             Configuration.UI_MODE_NIGHT_UNDEFINED -> {
-                var historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
+                val historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
                 return ViewHolder(historyView)
             }
         }
-        var historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
+        val historyView = inflater.inflate(R.layout.row_qrhistory, parent, false)
         return ViewHolder(historyView)
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: QRListAdapter.ViewHolder, position: Int) {
-        val history: HistoryResponse? = mHistory?.get(position)
+        val history: HistoryResponse = mHistory.get(position)
         val dateview = viewHolder.textListDate
         val yearview = viewHolder.textListYear
         val bldgview = viewHolder.textListBldg
@@ -61,34 +59,46 @@ class QRListAdapter (
         val timeEntryView = viewHolder.textListTimeEntry
         val timeExitView = viewHolder.textListTimeExit
 
-//        WARNING! MAKE SURE TO GET DATE_ENTERED INSTEAD OF DATE_CREATED DATA
+        val dayOfTheWeek: String
+        val day: String
+        val monthString: String
+        val monthNumber: String
+        val year: String
 
-        val dayOfTheWeek = format("EEE", history?.date_created) as String // Thursday
-        val day = format("dd", history?.date_created) as String // 20
-        val monthString = format("MMM", history?.date_created) as String // Jun
-        val monthNumber = format("MM", history?.date_created) as String // 06
-        val year = format("yyyy", history?.date_created) as String // 2013
+        val timeEntry: String = format("HH:mm:ss", history.date_entered) as String
+        val timeExit: String = format("HH:mm:ss", history.date_exited) as String
 
-        val timeExit: String
-        if (history?.date_exited != null){
-            timeExit = format("HH:mm:ss", history?.date_exited) as String
+        if (timeEntry == "null") {
+            dayOfTheWeek = format("EEE", history.date_exited) as String // Thursday
+            day = format("dd", history.date_exited) as String // 25
+            monthString = format("MMM", history.date_exited) as String // May
+            monthNumber = format("MM", history.date_exited) as String // 05
+            year = format("yyyy", history.date_exited) as String // 2023
+
+            dateview.text = "$dayOfTheWeek, $monthString $day"
+            yearview.text = year
+            bldgview.text = history.building_name
+            roomview.text = history.room_name
+            timeEntryView.text = "Entry time: $timeEntry"
+            timeExitView.text = "Exit time: $timeExit"
         } else {
-            timeExit = "null"
-        }
-        val timeEntry = format("HH:mm:ss", history?.date_created) as String
+            dayOfTheWeek = format("EEE", history.date_entered) as String // Thursday
+            day = format("dd", history.date_entered) as String // 25
+            monthString = format("MMM", history.date_entered) as String // May
+            monthNumber = format("MM", history.date_entered) as String // 05
+            year = format("yyyy", history.date_entered) as String // 2023
 
-        if (history != null) {
-            dateview.setText("$dayOfTheWeek, $monthString $day")
-            yearview.setText(year)
-            bldgview.setText(history.building_name)
-            roomview.setText(history.room_name)
-            timeEntryView.setText("Entry time: $timeEntry")
-            timeExitView.setText("Exit time: $timeExit")
+            dateview.text = "$dayOfTheWeek, $monthString $day"
+            yearview.text = year
+            bldgview.text = history.building_name
+            roomview.text = history.room_name
+            timeEntryView.text = "Entry time: $timeEntry"
+            timeExitView.text = "Exit time: $timeExit"
         }
     }
 
     override fun getItemCount(): Int {
-        return mHistory!!.size
+        return mHistory.size
     }
 
     // Returns the total count of items in the list

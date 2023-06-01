@@ -1,29 +1,27 @@
 package com.example.iitrace
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Typeface
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.os.Bundle
+import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import java.util.*
+import java.util.Calendar
 
-class AlertsActivity : AppCompatActivity() {
+class ReportsCreateActivity : AppCompatActivity() {
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.alert_history)
+        setContentView(R.layout.reports_create)
 
-        val loadingBar = findViewById<ProgressBar>(R.id.pbAlerts)
         val chevron = findViewById<ImageButton>(R.id.ibChevron)
-        val chevron_small = findViewById<ImageView>(R.id.ivSmallChevron)
         val c: Calendar = Calendar.getInstance()
         val timeOfDay: Int = c.get(Calendar.HOUR_OF_DAY)
 
@@ -35,12 +33,10 @@ class AlertsActivity : AppCompatActivity() {
 
         fun nightModeSet() {
             chevron.setImageResource(R.drawable.icons8_chevron_w)
-            chevron_small.setImageResource(R.drawable.icons8_chevron_small_w)
         }
 
         fun dayModeSet() {
             chevron.setImageResource(R.drawable.icons8_chevron)
-            chevron_small.setImageResource(R.drawable.icons8_chevron_small)
         }
 
         when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
@@ -54,6 +50,5 @@ class AlertsActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
     }
 }

@@ -15,7 +15,7 @@
         android:id="@+id/appname"
         android:text="IITrace"
         android:fontFamily="@font/archivo_bold"
-        android:textColor="?android:textColorPrimary"
+        android:textColor="@color/black"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
