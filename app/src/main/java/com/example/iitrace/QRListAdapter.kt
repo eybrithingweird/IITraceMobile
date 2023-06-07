@@ -13,6 +13,11 @@ import com.example.iitrace.R
 import com.example.iitrace.network.data.responses.HistoryResponse
 //import java.text.DateFormat
 import android.text.format.DateFormat
+import android.util.Log
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 class QRListAdapter (
     private val mHistory: ArrayList<HistoryResponse>
@@ -59,42 +64,77 @@ class QRListAdapter (
         val timeEntryView = viewHolder.textListTimeEntry
         val timeExitView = viewHolder.textListTimeExit
 
-        val dayOfTheWeek: String
-        val day: String
-        val monthString: String
-        val monthNumber: String
-        val year: String
+        var timeExit: String
+        val timeEntry: String
 
-        val timeEntry: String = format("HH:mm:ss", history.date_entered) as String
-        val timeExit: String = format("HH:mm:ss", history.date_exited) as String
-
-        if (timeEntry == "null") {
-            dayOfTheWeek = format("EEE", history.date_exited) as String // Thursday
-            day = format("dd", history.date_exited) as String // 25
-            monthString = format("MMM", history.date_exited) as String // May
-            monthNumber = format("MM", history.date_exited) as String // 05
-            year = format("yyyy", history.date_exited) as String // 2023
-
-            dateview.text = "$dayOfTheWeek, $monthString $day"
-            yearview.text = year
-            bldgview.text = history.building_name
-            roomview.text = history.room_name
-            timeEntryView.text = "Entry time: $timeEntry"
-            timeExitView.text = "Exit time: $timeExit"
+        if (history.date_exited == null){
+            timeExit = "null"
         } else {
-            dayOfTheWeek = format("EEE", history.date_entered) as String // Thursday
-            day = format("dd", history.date_entered) as String // 25
-            monthString = format("MMM", history.date_entered) as String // May
-            monthNumber = format("MM", history.date_entered) as String // 05
-            year = format("yyyy", history.date_entered) as String // 2023
+//            val temp = sdf.format(history.date_exited)
+//            timeExit = temp.toString()
+//            val dateTimeChange = Date(history.date_exited - 28800 * 1000)
+//            Log.d("check", history.date_exited.toString())
+            var hour = Integer.parseInt(format("HH", history.date_exited) as String)
+            if (hour < 12) {
+                hour += 16
+            } else {
+                hour -= 8
+            }
+            val minutes = Integer.parseInt(format("mm", history.date_exited) as String)
+            val seconds = Integer.parseInt(format("ss", history.date_exited) as String)
 
-            dateview.text = "$dayOfTheWeek, $monthString $day"
-            yearview.text = year
-            bldgview.text = history.building_name
-            roomview.text = history.room_name
-            timeEntryView.text = "Entry time: $timeEntry"
-            timeExitView.text = "Exit time: $timeExit"
+            val hoursTxt: String
+            val minutesTxt: String
+            val secondsTxt: String
+
+            if (hour < 10){
+                hoursTxt = "0$hour"
+            } else {
+                hoursTxt = hour.toString()
+            }
+
+            if (minutes < 10){
+                minutesTxt = "0$minutes"
+            } else {
+                minutesTxt = minutes.toString()
+            }
+
+            if (seconds == 0){
+                secondsTxt = "00"
+            } else if (seconds < 10) {
+                secondsTxt = "0$seconds"
+            } else {
+                secondsTxt = seconds.toString()
+            }
+
+            timeExit = "$hoursTxt:$minutesTxt:$secondsTxt"
+
+//            timeExit = history.date_exited.toString()
+
+//            timeExit = format("HH:mm:ss", history.date_exited) as String
         }
+
+        if (history.date_created == null){
+            timeEntry = "null"
+        } else {
+//            val temp = sdf.format(history.date_created)
+//            timeEntry = temp.toString()
+            timeEntry = format("HH:mm:ss", history.date_created) as String
+//            timeEntry = history.date_created.toString()
+        }
+
+        val dayOfTheWeek: String = format("EEE", history.date_created) as String // Thursday
+        val day: String = format("dd", history.date_created) as String // 25
+        val monthString: String = format("MMM", history.date_created) as String // May
+        val monthNumber: String = format("MM", history.date_created) as String // 05
+        val year: String = format("yyyy", history.date_created) as String // 2023
+
+        dateview.text = "$dayOfTheWeek, $monthString $day"
+        yearview.text = year
+        bldgview.text = history.building_name
+        roomview.text = history.room_name
+        timeEntryView.text = "Entry time: $timeEntry"
+        timeExitView.text = "Exit time: $timeExit"
     }
 
     override fun getItemCount(): Int {

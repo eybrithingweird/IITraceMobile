@@ -6,14 +6,50 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SurfaceView
-        android:id="@+id/cameraSurfaceView"
+    <View
+        android:id="@+id/viewFaderScan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/near_black"
+        android:orientation="horizontal"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <ProgressBar
+        android:id="@+id/pbScanning"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/lesser_white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/viewRefresher"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <SurfaceView
+            android:id="@+id/cameraSurfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <View
         android:id="@+id/viewUpper1"
@@ -63,6 +99,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />
 
+    <TextView
+        android:id="@+id/tvScanningNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/archivo_regular"
+        android:text="If the camera view does not load after granting permissions, try pulling to refresh this screen."
+        android:textColor="@color/lesser_white"
+        android:gravity="center"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <!--<View
         android:id="@+id/barcode_line"
         android:layout_width="match_parent"
@@ -72,30 +122,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />-->
-
-    <View
-        android:id="@+id/viewFaderScan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/near_black"
-        android:orientation="horizontal"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
-
-    <ProgressBar
-        android:id="@+id/pbScanning"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/lesser_white"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

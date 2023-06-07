@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "419250718790",
+    "project_id": "iitrace-8885b",
+    "storage_bucket": "iitrace-8885b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419250718790:android:7e6bdbf8df7fa492c6a247",
+        "android_client_info": {
+          "package_name": "com.example.iitrace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419250718790-938tmn41vq5fuglel1negl1rbgb7fj4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCppF1L8fC6GLVahlE95ima57oF1yA5IvU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419250718790-938tmn41vq5fuglel1negl1rbgb7fj4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

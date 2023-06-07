@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="ic_launcher_background">#00000000</color>
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -22,17 +24,17 @@
     <color name="square_bluepurple">#9084a4</color>
     <color name="square_purple">#7a5691</color>
 
-    <color name="square_blue_d">#201c4e</color>
-    <color name="square_bluepurple_d">#211745</color>
-    <color name="square_purple_d">#2a0e4e</color>
+    <color name="square_blue_d">#312b78</color>
+    <color name="square_bluepurple_d">#472b78</color>
+    <color name="square_purple_d">#572b78</color>
 
     <color name="square_red">#EBB7B7</color>
     <color name="square_redorange">#F9B49F</color>
     <color name="square_orange">#FBCB9F</color>
 
-    <color name="square_red_d">#731111</color>
-    <color name="square_redorange_d">#732311</color>
-    <color name="square_orange_d">#764213</color>
+    <color name="square_red_d">#961717</color>
+    <color name="square_redorange_d">#962a17</color>
+    <color name="square_orange_d">#964117</color>
 
     <!--Gradient colors-->
 

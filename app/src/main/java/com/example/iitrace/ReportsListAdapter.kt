@@ -1,18 +1,13 @@
-package com.example.contacts
+package com.example.iitrace
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import android.text.format.DateFormat.format
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.iitrace.R
-import com.example.iitrace.network.data.responses.HistoryResponse
 //import java.text.DateFormat
-import android.text.format.DateFormat
 import com.example.iitrace.network.data.responses.ReportsResponse
 
 class ReportsListAdapter (
@@ -33,7 +28,7 @@ class ReportsListAdapter (
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(viewHolder: ReportsListAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val reports: ReportsResponse = mReports.get(position)
         val dateview = viewHolder.textListDate
         val diseaseview = viewHolder.textListDisease
@@ -47,8 +42,10 @@ class ReportsListAdapter (
 //        monthNumber = format("MM", reports.date_created) as String // 05
         val year: String = format("yyyy", reports.date_created) as String // 2023
 
-        dateview.text = "$monthString $day, $year"
-        diseaseview.text = reports.disease_name
+        val dis = reports.disease_name
+
+        dateview.text = "Date reported: $monthString $day, $year"
+        diseaseview.text = "Disease reported: $dis"
     }
 
     override fun getItemCount(): Int {

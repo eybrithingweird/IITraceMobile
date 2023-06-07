@@ -59,36 +59,80 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="@id/viewCenter"
         app:layout_constraintTop_toTopOf="@id/viewCenter"
         app:layout_constraintEnd_toEndOf="@id/viewCenter"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tvProfID"
+            android:id="@+id/tvDiseaseTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
             android:fontFamily="@font/archivo_bold"
-            android:text="ID number:"
+            android:text="Disease to report: "
             android:textColor="?android:textColorPrimary"
-            android:textSize="22sp"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/tvID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tvProfID"
-            android:fontFamily="@font/archivo_regular"
-            android:layout_marginStart="20dp"
-            android:text="2019-0075"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="22sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvProfID" />
+        <Spinner
+            android:id="@+id/spinnerDrpdwn"
+            android:layout_width="300dp"
+            android:layout_height="48dp"
+            android:layout_below="@+id/tvDiseaseTxt"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/field_transparent"
+            android:spinnerMode="dropdown" />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_regular"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bttnReportCreate" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bttnReportCreate"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/button_theme_2"
+        android:clickable="false"
+        android:fontFamily="@font/archivo_semibold"
+        android:gravity="center"
+        android:text="Submit report"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlFirstLine" />
+
+    <View
+        android:id="@+id/viewFader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/near_black"
+        android:orientation="horizontal"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
 
     <ProgressBar
         android:id="@+id/pbCreateReport"

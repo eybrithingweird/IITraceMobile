@@ -1,5 +1,6 @@
 package com.example.iitrace.domain.usecases.scanQRUseCase
 
+import android.util.Log
 import com.example.iitrace.domain.repository.IITraceRepository
 import com.example.iitrace.network.data.requests.ScanQRRequest
 import com.example.iitrace.network.data.responses.ScanQRResponse
@@ -14,7 +15,7 @@ class ScanQRUseCase @Inject constructor(private val repository: IITraceRepositor
     operator fun invoke(token: Map<String, String>, request: ScanQRRequest): Flow<Resource<ScanQRResponse>> = flow {
         try {
             emit(Resource.Loading())
-            val response = repository.scans(token, request)
+            var response = repository.scans(token, request)
             emit(Resource.Success(response))
         } catch (e: HttpException) {
             emit(Resource.Error("An error occurred"))

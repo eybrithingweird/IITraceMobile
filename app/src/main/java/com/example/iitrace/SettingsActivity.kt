@@ -14,6 +14,13 @@ import java.util.*
 
 
 class SettingsActivity : AppCompatActivity() {
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)

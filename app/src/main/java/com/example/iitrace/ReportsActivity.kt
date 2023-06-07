@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -16,9 +15,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.contacts.QRListAdapter
-import com.example.contacts.ReportsListAdapter
-import com.example.iitrace.network.data.responses.HistoryResponse
 import com.example.iitrace.network.data.responses.ReportsResponse
 import com.example.iitrace.viewmodel.IITraceViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,6 +23,12 @@ import java.util.*
 @AndroidEntryPoint
 class ReportsActivity : AppCompatActivity() {
     private val iitraceViewModel: IITraceViewModel by viewModels()
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -108,7 +110,7 @@ class ReportsActivity : AppCompatActivity() {
                         (rvReports.layoutManager as LinearLayoutManager).reverseLayout = true
                         (rvReports.layoutManager as LinearLayoutManager).stackFromEnd = true
                         rvReports.setHasFixedSize(true)
-                        rvReports.scrollToPosition(0)
+                        rvReports.scrollToPosition(-1)
                     } else {
                         textViewNull.visibility = View.VISIBLE
                     }

@@ -1,10 +1,12 @@
 package com.example.iitrace
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
@@ -14,6 +16,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -23,18 +26,47 @@ class HomeActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_MAIN)
         intent.addCategory(Intent.CATEGORY_HOME)
         startActivity(intent)
+        finish()
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
 
         val token = SessionManager.getToken(applicationContext)
         if (token.isNullOrBlank()) {
+            finish()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
+            startActivity(intent)
+        }
+
+        val expiry = SessionManager.getExpiryData(applicationContext)!!
+        val currentTime = Calendar.getInstance().time
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val dateFormat = sdf.parse(expiry)
+        val tempFormat = sdf.format(currentTime)
+        val calFormat = sdf.parse(tempFormat)
+
+        val inputPattern = "yyyy-MM-dd HH:mm:ss"
+        val inputFormat = SimpleDateFormat(inputPattern)
+        val expiryFormat = dateFormat?.let { inputFormat.format(it) }
+        val currentFormat = calFormat?.let { inputFormat.format(it) }
+
+//        Log.d("Expiry", expiryFormat.toString())
+//        Log.d("Test", currentFormat.toString())
+//        Log.d("Tester", (expiryFormat.toString() < currentFormat.toString()).toString())
+        if (expiryFormat.toString() < currentFormat.toString()){
+            SessionManager.clearData(applicationContext)
             val intent = Intent(this, MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
             finish()
+        } else {
+            Log.d("Helper", "Still logged in")
         }
 
         val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
@@ -58,7 +90,6 @@ class HomeActivity : AppCompatActivity() {
         val imageField1 = findViewById<ImageView>(R.id.ivHeader)
         val imageField2 = findViewById<ImageView>(R.id.ivFooter)
         val starter = findViewById<TextView>(R.id.tvLoggedIn)
-        val greetingField = findViewById<TextView>(R.id.tvWelcomeTitle)
         val viewBanner = findViewById<View>(R.id.viewBanner)
         val viewBottom = findViewById<View>(R.id.viewBottom)
 
@@ -76,37 +107,37 @@ class HomeActivity : AppCompatActivity() {
         starter.text = "Logged in as $usernameData"
 
         fun nightModeSet() {
-            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_red_d)
-            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_red_d)
+            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
+            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
         }
 
         fun dayModeSet() {
-            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_red)
-            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_red)
+            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
+            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
         }
 
         fun nightModeSetD() {
-            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_blue_d)
-            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_blue_d)
+            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
+            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
         }
 
         fun dayModeSetD() {
-            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_blue)
-            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_blue)
+            scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
+            qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
         }
@@ -128,17 +159,10 @@ class HomeActivity : AppCompatActivity() {
 
             viewBanner.setBackgroundResource(R.drawable.grad_redyellow)
             viewBottom.setBackgroundResource(R.drawable.grad_redyellow)
-//            greetingField.setTextColor(ContextCompat.getColor(this, R.color.near_black))
 
             imageField1.setImageResource(R.drawable.sunandcloud2)
             imageField2.setImageResource(R.drawable.cloudonly)
-            if (timeOfDay < 12) {
-                greetingField.text = "Good morning, $usernameData!"
-            } else if (timeOfDay == 12) {
-                greetingField.text = "Good noon, $usernameData!"
-            } else {
-                greetingField.text = "Good afternoon, $usernameData!"
-            }
+
         } else if (timeOfDay > 18 || timeOfDay == 18) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
 
@@ -157,41 +181,34 @@ class HomeActivity : AppCompatActivity() {
 
             viewBanner.setBackgroundResource(R.drawable.grad_bluepurple)
             viewBottom.setBackgroundResource(R.drawable.grad_bluepurple)
-            greetingField.setTextColor(ContextCompat.getColor(this, R.color.lesser_white))
 
             imageField1.setImageResource(R.drawable.moonandstars3)
             imageField2.setImageResource(R.drawable.starsonly)
-            greetingField.text = "Good evening, $usernameData!"
         }
 
         scanQR.setOnClickListener {
             val intent = Intent(this, ScanQRActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         qrHistory.setOnClickListener {
             val intent = Intent(this, QRHistoryActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         alertHistory.setOnClickListener {
             val intent = Intent(this, AlertsActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         reports.setOnClickListener {
             val intent = Intent(this, ReportsActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         settings.setOnClickListener {
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         signOut.setOnClickListener {
@@ -206,7 +223,7 @@ class HomeActivity : AppCompatActivity() {
         survey.setOnClickListener {
             val viewIntent = Intent(
                 "android.intent.action.VIEW",
-                Uri.parse("http://www.stackoverflow.com/")
+                Uri.parse("https://forms.gle/z7SdVzw9g538WDGH9")
             )
             startActivity(viewIntent)
             finish()

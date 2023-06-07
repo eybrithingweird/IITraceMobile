@@ -31,6 +31,10 @@ object SessionManager {
         return getString(context, "username")
     }
 
+    fun getExpiryData(context: Context): String? {
+        return getString(context, "expiry")
+    }
+
     fun saveString(context: Context, key: String, value: String) {
         val prefs: SharedPreferences =
             context.getSharedPreferences(context.getString(R.string.app_name), Context.MODE_PRIVATE)

@@ -45,81 +45,43 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <View
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/viewCenter"
         android:layout_width="match_parent"
-        android:layout_height="609dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="10dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintHeight_max="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlertsTitle" />
+        app:layout_constraintStart_toStartOf="parent">
 
-    <ImageView
-        android:id="@+id/ivField1"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="20dp"
-        android:contentDescription="Field with bottom"
-        android:src="@drawable/field_withbottom_light"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/tvNull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/archivo_regular"
+        android:gravity="center"
+        android:text="No alert history found. \n Come back later when you receive one!"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAlertsTitle" />
-
-    <TextView
-        android:id="@+id/tvListTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="12dp"
-        android:fontFamily="@font/archivo_bold"
-        android:text="Warning"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/ivField1"
-        app:layout_constraintTop_toTopOf="@+id/ivField1" />
-
-    <TextView
-        android:id="@+id/tvListDateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:fontFamily="@font/archivo_regular"
-        android:text="OCT. 18, 2022; 5:02 PM"
-        android:textColor="?android:textColorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/ivField1"
-        app:layout_constraintTop_toBottomOf="@+id/tvListTitle" />
-
-    <TextView
-        android:id="@+id/tvListContents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:fontFamily="@font/archivo_regular"
-        android:text="Close...."
-        android:textColor="?android:textColorPrimary"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivField1"
-        app:layout_constraintEnd_toEndOf="@+id/ivField1"
-        app:layout_constraintTop_toTopOf="@+id/ivField1" />
-
-    <ImageView
-        android:id="@+id/ivSmallChevron"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="Small chevron"
-        android:maxWidth="20dp"
-        android:maxHeight="20dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="@+id/ivField1"
-        app:layout_constraintEnd_toEndOf="@+id/ivField1"
-        app:layout_constraintStart_toEndOf="@+id/tvListContents"
-        app:layout_constraintTop_toTopOf="@+id/ivField1"
-        app:srcCompat="@drawable/icons8_chevron_small" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/pbAlerts"

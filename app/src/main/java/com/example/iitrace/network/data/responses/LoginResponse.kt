@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(
     @SerializedName("expiry")
-    val access: String,
+    val expiry: String,
     @SerializedName("token")
     var token: String,
     @SerializedName("user_data")
-    var `user_data`: Data
+    var user_data: Data
 
 ) {
     data class Data(

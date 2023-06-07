@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -100,6 +101,9 @@ class ApplicationModule {
 //        }
 //        val trustManager: X509TrustManager = trustManagers[0] as X509TrustManager
 
+//        val dispatcher = Dispatcher()
+//        dispatcher.maxRequests = 1
+
         //START OF UNSAFE
         val trustAllCerts = arrayOf<TrustManager>(
             object : X509TrustManager {
@@ -132,8 +136,13 @@ class ApplicationModule {
 
 //        return builder.build()
 
+        val dispatcher = Dispatcher()
+        dispatcher.maxRequests = 1
+
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .dispatcher(dispatcher)
+            .retryOnConnectionFailure(false)
 //            .hostnameVerifier(NullHostNameVerifier())
 //            .sslSocketFactory(sslContext.socketFactory, trustManager)
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)

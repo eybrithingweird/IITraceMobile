@@ -11,19 +11,45 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.example.contacts.AlertsListAdapter
+import com.example.contacts.QRListAdapter
+import com.example.iitrace.network.data.responses.AlertsResponse
+import com.example.iitrace.network.data.responses.HistoryResponse
+import com.example.iitrace.viewmodel.IITraceViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class AlertsActivity : AppCompatActivity() {
+    private val iitraceViewModel: IITraceViewModel by viewModels()
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
+        val token = SessionManager.getToken(applicationContext)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.alert_history)
 
+        fun getHeaderMap(): Map<String, String> {
+            return mapOf("Authorization" to "Token $token")
+        }
+
+        iitraceViewModel.alerts(getHeaderMap())
+        observeAlerts()
+
         val loadingBar = findViewById<ProgressBar>(R.id.pbAlerts)
         val chevron = findViewById<ImageButton>(R.id.ibChevron)
-        val chevron_small = findViewById<ImageView>(R.id.ivSmallChevron)
         val c: Calendar = Calendar.getInstance()
         val timeOfDay: Int = c.get(Calendar.HOUR_OF_DAY)
 
@@ -35,12 +61,10 @@ class AlertsActivity : AppCompatActivity() {
 
         fun nightModeSet() {
             chevron.setImageResource(R.drawable.icons8_chevron_w)
-            chevron_small.setImageResource(R.drawable.icons8_chevron_small_w)
         }
 
         fun dayModeSet() {
             chevron.setImageResource(R.drawable.icons8_chevron)
-            chevron_small.setImageResource(R.drawable.icons8_chevron_small)
         }
 
         when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
@@ -49,11 +73,54 @@ class AlertsActivity : AppCompatActivity() {
             Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
         }
 
+        val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewCenter)
+        pullToRefresh.setOnRefreshListener {
+            iitraceViewModel.alerts(getHeaderMap())
+            observeAlerts()
+            pullToRefresh.isRefreshing = false
+        }
+
         chevron.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
 
+    }
+
+    private fun observeAlerts() {
+        iitraceViewModel._alertsState.observe(this) { data ->
+            val loadingBar = findViewById<ProgressBar>(R.id.pbAlerts)
+            val textViewNull = findViewById<TextView>(R.id.tvNull)
+            when {
+                data.isLoading -> {
+                    loadingBar.visibility = View.VISIBLE
+                }
+                data.data != null -> {
+                    loadingBar.visibility = View.INVISIBLE
+
+                    Toast.makeText(this@AlertsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+                    if (!data?.data?.isEmpty()!!) {
+                        val rvAlerts = findViewById<View>(R.id.recycler_view) as RecyclerView
+                        val alertsArr: ArrayList<AlertsResponse> = data.data!!
+                        val adapter = AlertsListAdapter(alertsArr)
+                        rvAlerts.adapter = adapter
+                        rvAlerts.layoutManager = LinearLayoutManager(this)
+                        (rvAlerts.layoutManager as LinearLayoutManager).reverseLayout = true
+                        (rvAlerts.layoutManager as LinearLayoutManager).stackFromEnd = true
+                        rvAlerts.setHasFixedSize(true)
+                        rvAlerts.scrollToPosition(-1)
+                    } else {
+                        textViewNull.visibility = View.VISIBLE
+                    }
+                }
+                else -> {
+                    loadingBar.visibility = View.INVISIBLE
+//                    Toast.makeText(this@QRHistoryActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
+                    textViewNull.visibility = View.VISIBLE
+                    textViewNull.text = "Failure: ${data.error}"
+                }
+            }
+        }
     }
 }

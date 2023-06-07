@@ -3,6 +3,7 @@ package com.example.iitrace
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
@@ -21,6 +22,12 @@ import java.util.*
 @AndroidEntryPoint
 class QRHistoryActivity  : AppCompatActivity() {
     private val iitraceViewModel: IITraceViewModel by viewModels()
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        finish()
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -90,13 +97,14 @@ class QRHistoryActivity  : AppCompatActivity() {
                     if (!data?.data?.isEmpty()!!) {
                         val rvHistory = findViewById<View>(R.id.recycler_view) as RecyclerView
                         val historyArr: ArrayList<HistoryResponse> = data.data!!
+//                        Log.d("Test", historyArr.toString())
                         val adapter = QRListAdapter(historyArr)
                         rvHistory.adapter = adapter
                         rvHistory.layoutManager = LinearLayoutManager(this)
                         (rvHistory.layoutManager as LinearLayoutManager).reverseLayout = true
                         (rvHistory.layoutManager as LinearLayoutManager).stackFromEnd = true
                         rvHistory.setHasFixedSize(true)
-                        rvHistory.scrollToPosition(0)
+                        rvHistory.scrollToPosition(-1)
                     } else {
                         textViewNull.visibility = View.VISIBLE
                     }
