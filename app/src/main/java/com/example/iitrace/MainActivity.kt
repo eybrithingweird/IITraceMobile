@@ -84,24 +84,25 @@ class MainActivity : AppCompatActivity() {
 
         val continueClick = findViewById<Button>(R.id.bttnContinue)
         val iitClick = findViewById<Button>(R.id.bttnMyIIT)
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.d("Firebase", "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            firebaseToken = task.result
+
+            // Log and toast
+//                val msg = getString(R.string.msg_token_fmt, token)
+            Log.d("Firebase", firebaseToken)
+//                Toast.makeText(this, firebaseToken, Toast.LENGTH_SHORT).show()
+        })
+
         continueClick.setOnClickListener {
             val user = username.text.toString()
             val pass = password.text.toString()
-
-            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.d("Firebase", "Fetching FCM registration token failed", task.exception)
-                    return@OnCompleteListener
-                }
-
-                // Get new FCM registration token
-                firebaseToken = task.result
-
-                // Log and toast
-//                val msg = getString(R.string.msg_token_fmt, token)
-                Log.d("Firebase", firebaseToken)
-//                Toast.makeText(this, firebaseToken, Toast.LENGTH_SHORT).show()
-            })
 
             if (user.isEmpty()){
                 Toast.makeText(this@MainActivity, "Username required", Toast.LENGTH_LONG).show()
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity() {
 //                val deviceToken = ArrayList<String>()
 //                deviceToken.add(firebaseToken)
                 val loginRequest = LoginRequest(user, pass, firebaseToken)
+                Log.d("Firebase2", firebaseToken)
                 iitraceViewModel.login(loginRequest)
                 observeLogin()
             }
@@ -255,7 +257,7 @@ class MainActivity : AppCompatActivity() {
                     continueButton.visibility = View.VISIBLE
                     myiitButton.visibility = View.VISIBLE
                     getWindow().clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE )
-                    Toast.makeText(this@MainActivity, "Login Failure: ${data.error}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, "Login Failure: ${data.error}.\nCheck your credentials and/or internet connection, and try again.", Toast.LENGTH_LONG).show()
                 }
             }
         }

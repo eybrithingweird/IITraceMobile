@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/archivo_regular"
         android:gravity="center"
-        android:text="No alert history found. \n Come back later when you receive one!"
+        android:text="No alert history found. \n Come back later when you receive a notification!"
         android:textColor="?android:textColorPrimary"
         android:textSize="20sp"
         android:visibility="invisible"

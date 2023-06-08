@@ -48,7 +48,7 @@
         <activity android:name=".ScanQRActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".QRHistoryActivity" />
-        <activity android:name=".AlertsActivity"/>
+        <activity android:name=".AlertsActivity" />
         <activity android:name=".ReportsActivity"/>
         <activity android:name=".ReportsCreateActivity"/>
         <activity android:name=".ReportsWarningActivity" android:launchMode="singleTop"/>

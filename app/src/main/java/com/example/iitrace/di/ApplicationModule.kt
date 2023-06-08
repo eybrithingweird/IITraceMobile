@@ -15,9 +15,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.KeyStore
 import java.security.SecureRandom
-import java.security.cert.CertificateException
-import java.security.cert.X509Certificate
 import java.util.*
 import javax.inject.Singleton
 import javax.net.ssl.*
@@ -68,11 +67,12 @@ class ApplicationModule {
 //        } finally {
 //            cert.close()
 //        }
-//
+
+
 //        // creating a KeyStore containing our trusted CAs
-//        val keyStoreType = KeyStore.getDefaultType()
-//        val keyStore = KeyStore.getInstance(keyStoreType)
-//        keyStore.load(null, null)
+        val keyStoreType = KeyStore.getDefaultType()
+        val keyStore = KeyStore.getInstance(keyStoreType)
+        keyStore.load(null, null)
 //        keyStore.setCertificateEntry("ca", ca)
 //
 //        // creating a TrustManager that trusts the CAs in our KeyStore
@@ -90,54 +90,69 @@ class ApplicationModule {
 //        val sslContext = SSLContext.getInstance("TLS")
 //        sslContext.init(null, tmf.trustManagers, null)
 //
-//        val trustManagerFactory: TrustManagerFactory =
-//            TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
-//        trustManagerFactory.init(null as KeyStore?)
-//        val trustManagers: Array<TrustManager> = trustManagerFactory.getTrustManagers()
-//        check(!(trustManagers.size != 1 || trustManagers[0] !is X509TrustManager)) {
-//            "Unexpected default trust managers:" + Arrays.toString(
-//                trustManagers
-//            )
-//        }
-//        val trustManager: X509TrustManager = trustManagers[0] as X509TrustManager
+        val trustManagerFactory: TrustManagerFactory =
+            TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+        trustManagerFactory.init(null as KeyStore?)
+        val trustManagers: Array<TrustManager> = trustManagerFactory.getTrustManagers()
+        check(!(trustManagers.size != 1 || trustManagers[0] !is X509TrustManager)) {
+            "Unexpected default trust managers:" + Arrays.toString(
+                trustManagers
+            )
+        }
+        val trustManager: X509TrustManager = trustManagers[0] as X509TrustManager
 
-//        val dispatcher = Dispatcher()
-//        dispatcher.maxRequests = 1
+//        val keyStore: KeyStore = readKeyStore() //your method to obtain KeyStore
 
-        //START OF UNSAFE
-        val trustAllCerts = arrayOf<TrustManager>(
-            object : X509TrustManager {
-                @Throws(CertificateException::class)
-                override fun checkClientTrusted(
-                    chain: Array<X509Certificate?>?,
-                    authType: String?
-                ) {
-                }
-
-                @Throws(CertificateException::class)
-                override fun checkServerTrusted(
-                    chain: Array<X509Certificate?>?,
-                    authType: String?
-                ) {
-                }
-
-                override fun getAcceptedIssuers(): Array<X509Certificate?>? {
-                    return arrayOf()
-                }
-            }
-        )
-
-        // Install the all-trusting trust manager
         val sslContext = SSLContext.getInstance("SSL")
-        sslContext.init(null, trustAllCerts, SecureRandom())
-
-        // Create an ssl socket factory with our all-trusting manager
-        val sslSocketFactory = sslContext.socketFactory
-
-//        return builder.build()
+//        val trustManagerFactory =
+//            TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
+//        trustManagerFactory.init(keyStore)
+        val keyManagerFactory =
+            KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm())
+        keyManagerFactory.init(keyStore, "keystore_pass".toCharArray())
+        sslContext.init(
+            keyManagerFactory.keyManagers,
+            trustManagerFactory.trustManagers,
+            SecureRandom()
+        )
 
         val dispatcher = Dispatcher()
         dispatcher.maxRequests = 1
+
+        //START OF UNSAFE
+//        val trustAllCerts = arrayOf<TrustManager>(
+//            object : X509TrustManager {
+//                @Throws(CertificateException::class)
+//                override fun checkClientTrusted(
+//                    chain: Array<X509Certificate?>?,
+//                    authType: String?
+//                ) {
+//                }
+//
+//                @Throws(CertificateException::class)
+//                override fun checkServerTrusted(
+//                    chain: Array<X509Certificate?>?,
+//                    authType: String?
+//                ) {
+//                }
+//
+//                override fun getAcceptedIssuers(): Array<X509Certificate?>? {
+//                    return arrayOf()
+//                }
+//            }
+//        )
+//
+//        // Install the all-trusting trust manager
+//        val sslContext = SSLContext.getInstance("SSL")
+//        sslContext.init(null, trustAllCerts, SecureRandom())
+//
+//        // Create an ssl socket factory with our all-trusting manager
+//        val sslSocketFactory = sslContext.socketFactory
+//
+////        return builder.build()
+//
+//        val dispatcher = Dispatcher()
+//        dispatcher.maxRequests = 1
 
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
@@ -145,7 +160,8 @@ class ApplicationModule {
             .retryOnConnectionFailure(false)
 //            .hostnameVerifier(NullHostNameVerifier())
 //            .sslSocketFactory(sslContext.socketFactory, trustManager)
-            .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
+//            .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
+            .sslSocketFactory(sslContext.getSocketFactory(), trustManager)
             .hostnameVerifier(HostnameVerifier { hostname, session -> true })
             .build()
     }

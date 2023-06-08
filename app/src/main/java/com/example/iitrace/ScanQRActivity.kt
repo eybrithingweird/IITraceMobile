@@ -71,6 +71,9 @@ class ScanQRActivity : AppCompatActivity() {
                     loadingBar.visibility = View.INVISIBLE
                     fader.visibility = View.INVISIBLE
                     Toast.makeText(this@ScanQRActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
@@ -102,6 +105,9 @@ class ScanQRActivity : AppCompatActivity() {
                     loadingBar.visibility = View.INVISIBLE
                     fader.visibility = View.INVISIBLE
                     Toast.makeText(this@ScanQRActivity, "Failure: ${data.error}", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
         }
@@ -151,7 +157,6 @@ class ScanQRActivity : AppCompatActivity() {
 //            AnimationUtils.loadAnimation(this@ScanQRActivity, R.anim.scanner_animation)
 //        binding.barcodeLine.startAnimation(aniSlide)
     }
-
 
     private fun setupControls() {
         barcodeDetector =
@@ -214,10 +219,13 @@ class ScanQRActivity : AppCompatActivity() {
                     runOnUiThread {
                         cameraSource.stop()
 //                        Toast.makeText(this@ScanQRActivity, "value- $scannedValue", Toast.LENGTH_SHORT).show()
+                        Log.d("QR", "$scannedValue")
                         val separated = scannedValue.split("-".toRegex())
                         if (separated.size == 1) {
                             Toast.makeText(this@ScanQRActivity, "Invalid QR code! Try again.", Toast.LENGTH_SHORT).show()
-                            setupControls()
+                            val intent = Intent(this@ScanQRActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         } else {
                             val room = separated[0]
                             val qrType = separated[1]
@@ -227,10 +235,15 @@ class ScanQRActivity : AppCompatActivity() {
                                 iitraceViewModel.scans(getHeaderMap(), scanqrRequest)
                                 observeScanQR()
                                 finish()
-                            } else {
+                            } else if (qrType == "exit") {
                                 val scanEqrRequest = ScanQRERequest(room.toInt())
                                 iitraceViewModel.exitscans(getHeaderMap(), scanEqrRequest)
                                 observeScanEQR()
+                                finish()
+                            } else {
+                                Toast.makeText(this@ScanQRActivity, "Invalid QR code! Try again.", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@ScanQRActivity, HomeActivity::class.java)
+                                startActivity(intent)
                                 finish()
                             }
                         }

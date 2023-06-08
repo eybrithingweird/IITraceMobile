@@ -1,25 +1,18 @@
 package com.example.iitrace
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-
-import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Typeface
-import android.view.LayoutInflater
+import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.contacts.AlertsListAdapter
-import com.example.contacts.QRListAdapter
 import com.example.iitrace.network.data.responses.AlertsResponse
-import com.example.iitrace.network.data.responses.HistoryResponse
 import com.example.iitrace.viewmodel.IITraceViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
@@ -32,6 +25,10 @@ class AlertsActivity : AppCompatActivity() {
         finish()
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

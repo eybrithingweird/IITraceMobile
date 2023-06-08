@@ -30,6 +30,7 @@ class QRListAdapter (
         val textListRoom = itemView.findViewById<TextView>(R.id.tvListRoom)
         val textListTimeEntry = itemView.findViewById<TextView>(R.id.tvListTimeEntered)
         val textListTimeExit = itemView.findViewById<TextView>(R.id.tvListTimeExited)
+        val imageLogo = itemView.findViewById<ImageView>(R.id.ivCollegeLogo)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -63,6 +64,7 @@ class QRListAdapter (
         val roomview = viewHolder.textListRoom
         val timeEntryView = viewHolder.textListTimeEntry
         val timeExitView = viewHolder.textListTimeExit
+        val image = viewHolder.imageLogo
 
         var timeExit: String
         val timeEntry: String
@@ -135,6 +137,12 @@ class QRListAdapter (
         roomview.text = history.room_name
         timeEntryView.text = "Entry time: $timeEntry"
         timeExitView.text = "Exit time: $timeExit"
+
+        if (history.building_name == "CCS" || history.building_name.uppercase().contains("CCS")) {
+            image.setImageResource(R.drawable.ccs_logo)
+        } else {
+            image.setImageResource(R.drawable.seal_02)
+        }
     }
 
     override fun getItemCount(): Int {
