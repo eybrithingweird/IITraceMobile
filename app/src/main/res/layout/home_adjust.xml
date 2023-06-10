@@ -10,7 +10,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 android:id="@+id/ivHeader"
                 android:layout_width="match_parent"
                 android:layout_height="319dp"
-                android:contentDescription="Sun and clouds"
+                android:contentDescription="@string/sun_and_clouds"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +57,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/icons8_profile"
-                    app:tint="@color/white" />
+                    app:tint="@color/white"
+                    android:contentDescription="@string/icon" />
 
                 <TextView
                     android:id="@+id/tvLoggedIn"
@@ -69,7 +71,6 @@
                     android:fontFamily="@font/archivo_regular"
                     android:textColor="@color/white"
                     android:gravity="center"
-                    android:text="Logged in as user"
                     android:textSize="18sp" />
 
             </RelativeLayout>
@@ -92,7 +93,7 @@
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="Scan QR"
+                    android:text="@string/scan_qr"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -107,7 +108,7 @@
                     android:layout_alignEnd="@+id/bttnScanQR"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Scan QR"
+                    android:contentDescription="@string/scan_qr_desc"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:src="@drawable/icons8_qrcode"
@@ -117,14 +118,13 @@
                     android:id="@+id/bttnQRhistory"
                     android:layout_width="98dp"
                     android:layout_height="98dp"
-                    android:layout_toRightOf="@+id/bttnScanQR"
                     android:layout_marginStart="20dp"
                     android:layout_toEndOf="@+id/bttnScanQR"
                     android:background="@drawable/button_square_red"
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="History"
+                    android:text="@string/history"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -133,13 +133,13 @@
                     android:id="@+id/ivClock"
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:layout_toRightOf="@+id/bttnScanQR"
+                    android:layout_toEndOf="@+id/bttnScanQR"
                     android:layout_alignStart="@+id/bttnQRhistory"
                     android:layout_alignEnd="@+id/bttnQRhistory"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="10dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="QR History"
+                    android:contentDescription="@string/qr_history_desc"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:scaleType="fitCenter"
@@ -154,12 +154,12 @@
                     android:layout_width="98dp"
                     android:layout_height="98dp"
                     android:layout_marginStart="20dp"
-                    android:layout_toRightOf="@+id/bttnQRhistory"
+                    android:layout_toEndOf="@+id/bttnQRhistory"
                     android:background="@drawable/button_square_red"
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="Alerts"
+                    android:text="@string/alerts"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -173,7 +173,7 @@
                     android:layout_alignEnd="@+id/bttnAlerthistory"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Alert history"
+                    android:contentDescription="@string/alert_history_desc"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:src="@drawable/icons8_alert"
@@ -198,7 +198,7 @@
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="Reports"
+                    android:text="@string/reports"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -212,7 +212,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Reports"
+                    android:contentDescription="@string/reports_desc"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:scaleType="fitCenter"
@@ -226,13 +226,13 @@
                     android:id="@+id/bttnSettings"
                     android:layout_width="98dp"
                     android:layout_height="98dp"
-                    android:layout_toRightOf="@+id/bttnReports"
+                    android:layout_toEndOf="@+id/bttnReports"
                     android:layout_marginStart="20dp"
                     android:background="@drawable/button_square_red"
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="Settings"
+                    android:text="@string/settings"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -246,7 +246,7 @@
                     android:layout_alignEnd="@+id/bttnSettings"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Settings"
+                    android:contentDescription="@string/settings_desc"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:src="@drawable/icons8_settings"
@@ -262,7 +262,7 @@
                     android:fontFamily="@font/archivo_bold"
                     android:gravity="bottom|center_horizontal"
                     android:stateListAnimator="@null"
-                    android:text="Logout"
+                    android:text="@string/logout"
                     android:textColor="?android:textColorPrimary"
                     android:textSize="11sp"
                     app:layout_constraintEnd_toEndOf="parent" />
@@ -276,7 +276,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="8dp"
                     android:adjustViewBounds="true"
-                    android:contentDescription="Sign out"
+                    android:contentDescription="@string/sign_out"
                     android:maxWidth="72dp"
                     android:maxHeight="72dp"
                     android:scaleType="fitCenter"
@@ -287,18 +287,6 @@
                     app:tint="?android:textColorPrimary" />
 
             </RelativeLayout>
-
-<!--            <RelativeLayout-->
-<!--                android:id="@+id/rlThirdRow"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginTop="40dp"-->
-<!--                android:gravity="center_horizontal"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/rlSecondRow" >-->
-
-<!--                -->
-
-<!--            </RelativeLayout>-->
 
             <RelativeLayout
                 android:id="@+id/rlFourthRow"
@@ -328,7 +316,7 @@
                 android:layout_width="500dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="90dp"
-                android:background="@drawable/grad_redyellow"
+                android:background="@color/grad_yellow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -338,7 +326,7 @@
                 android:id="@+id/ivFooter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="Clouds or stars"
+                android:contentDescription="@string/clouds_or_stars"
                 android:scaleType="fitEnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

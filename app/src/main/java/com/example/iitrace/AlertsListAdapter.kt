@@ -67,7 +67,7 @@ class AlertsListAdapter (
         val dayOfTheWeek: String = format("EEE", dateTest) as String // Thursday
         val day: String = format("dd", dateTest) as String // 25
         val monthString: String = format("MMM", dateTest) as String // May
-        val monthNumber: String = format("MM", dateTest) as String // 05
+//        val monthNumber: String = format("MM", dateTest) as String // 05
         val year: String = format("yyyy", dateTest) as String // 2023
         val timeText: String = format("HH:mm:ss", dateTest) as String //04:05:23
 
@@ -90,7 +90,6 @@ class AlertsListAdapter (
 
         dateview.text = "$dayOfTheWeek $monthString $day, $year, $timeText"
         val titleMsg = "$dayOfTheWeek $monthString $day, $year, $timeText"
-//        dateview.text = "$dateTest"
 
         buttonPop.setOnClickListener { v ->
             val popUpClass = PopUpClass()
@@ -102,8 +101,4 @@ class AlertsListAdapter (
         return mAlerts.size
     }
 
-    // Returns the total count of items in the list
-//    override fun getItemCount(): Int {
-//        return mHistory?.size
-//    }
 }

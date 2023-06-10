@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity() {
         finish()
     }
 
-    @SuppressLint("SimpleDateFormat")
+    @SuppressLint("SimpleDateFormat", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
 
@@ -55,9 +55,6 @@ class HomeActivity : AppCompatActivity() {
         val expiryFormat = dateFormat?.let { inputFormat.format(it) }
         val currentFormat = calFormat?.let { inputFormat.format(it) }
 
-//        Log.d("Expiry", expiryFormat.toString())
-//        Log.d("Test", currentFormat.toString())
-//        Log.d("Tester", (expiryFormat.toString() < currentFormat.toString()).toString())
         if (expiryFormat.toString() < currentFormat.toString()){
             SessionManager.clearData(applicationContext)
             val intent = Intent(this, MainActivity::class.java)
@@ -65,8 +62,6 @@ class HomeActivity : AppCompatActivity() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
             startActivity(intent)
             finish()
-        } else {
-            Log.d("Helper", "Still logged in")
         }
 
         val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
@@ -78,8 +73,6 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val usernameData = SessionManager.getUsernameData(applicationContext)
-        val idData = SessionManager.getIdData(applicationContext)
-        val emailData = SessionManager.getEmailData(applicationContext)
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_adjust)
@@ -110,46 +103,53 @@ class HomeActivity : AppCompatActivity() {
             scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
             qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
-            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
-            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange_d)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
+            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
+            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
+
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_red)
         }
 
         fun dayModeSet() {
             scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
             qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
-            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
-            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_orange)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
+            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
+            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
+
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_red)
         }
 
         fun nightModeSetD() {
             scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
             qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
-            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
-            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple_d)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
+            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
+            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
+
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_purple)
         }
 
         fun dayModeSetD() {
             scanQR.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
             qrHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
             alertHistory.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
-            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
-            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
-            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_purple)
+            reports.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
+            settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
+            signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
+
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_purple)
         }
 
         if (timeOfDay < 18) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
-
             when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
                 Configuration.UI_MODE_NIGHT_YES -> nightModeSet()
                 Configuration.UI_MODE_NIGHT_NO -> dayModeSet()
                 Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
             }
+
             scanQR.setBackgroundResource(R.drawable.button_square_red)
             qrHistory.setBackgroundResource(R.drawable.button_square_red)
             alertHistory.setBackgroundResource(R.drawable.button_square_redorange)
@@ -158,14 +158,12 @@ class HomeActivity : AppCompatActivity() {
             signOut.setBackgroundResource(R.drawable.button_square_orange)
 
             viewBanner.setBackgroundResource(R.drawable.grad_redyellow)
-            viewBottom.setBackgroundResource(R.drawable.grad_redyellow)
+            viewBottom.setBackgroundResource(R.color.grad_yellow)
 
             imageField1.setImageResource(R.drawable.sunandcloud2)
             imageField2.setImageResource(R.drawable.cloudonly)
 
-        } else if (timeOfDay > 18 || timeOfDay == 18) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
-
+        } else {
             when (this.resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
                 Configuration.UI_MODE_NIGHT_YES -> nightModeSetD()
                 Configuration.UI_MODE_NIGHT_NO -> dayModeSetD()
@@ -180,7 +178,7 @@ class HomeActivity : AppCompatActivity() {
             signOut.setBackgroundResource(R.drawable.button_square_purple)
 
             viewBanner.setBackgroundResource(R.drawable.grad_bluepurple)
-            viewBottom.setBackgroundResource(R.drawable.grad_bluepurple)
+            viewBottom.setBackgroundResource(R.color.grad_purple)
 
             imageField1.setImageResource(R.drawable.moonandstars3)
             imageField2.setImageResource(R.drawable.starsonly)

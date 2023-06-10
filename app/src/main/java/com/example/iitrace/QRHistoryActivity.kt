@@ -70,6 +70,8 @@ class QRHistoryActivity  : AppCompatActivity() {
 
         val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewCenter)
         pullToRefresh.setOnRefreshListener {
+            val textViewNull = findViewById<TextView>(R.id.tvNull)
+            textViewNull.visibility = View.INVISIBLE
             iitraceViewModel.history(getHeaderMap())
             observeHistory()
             pullToRefresh.isRefreshing = false
@@ -93,7 +95,7 @@ class QRHistoryActivity  : AppCompatActivity() {
                 data.data != null -> {
                     loadingBar.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@QRHistoryActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@QRHistoryActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.isEmpty()!!) {
                         val rvHistory = findViewById<View>(R.id.recycler_view) as RecyclerView
                         val historyArr: ArrayList<HistoryResponse> = data.data!!

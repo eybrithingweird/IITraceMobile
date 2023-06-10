@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) ==
+            PackageManager.PERMISSION_DENIED ) {
+            requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+
         val token = SessionManager.getToken(applicationContext)
         if (!token.isNullOrBlank()) {
             finish()
@@ -72,8 +77,8 @@ class MainActivity : AppCompatActivity() {
             window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
             faderView.setBackgroundColor(ContextCompat.getColor(this, R.color.red_orange))
         } else if (timeOfDay > 18 || timeOfDay == 18) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
-            faderView.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_purple))
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_yellow)
+            faderView.setBackgroundColor(ContextCompat.getColor(this, R.color.grad_yellow))
         }
 
         val username = findViewById<EditText>(R.id.etUsername)
@@ -91,13 +96,7 @@ class MainActivity : AppCompatActivity() {
                 return@OnCompleteListener
             }
 
-            // Get new FCM registration token
             firebaseToken = task.result
-
-            // Log and toast
-//                val msg = getString(R.string.msg_token_fmt, token)
-            Log.d("Firebase", firebaseToken)
-//                Toast.makeText(this, firebaseToken, Toast.LENGTH_SHORT).show()
         })
 
         continueClick.setOnClickListener {
@@ -109,21 +108,11 @@ class MainActivity : AppCompatActivity() {
             } else if (pass.isEmpty()){
                 Toast.makeText(this@MainActivity, "Password required", Toast.LENGTH_LONG).show()
             } else {
-//                val deviceToken = ArrayList<String>()
-//                deviceToken.add(firebaseToken)
                 val loginRequest = LoginRequest(user, pass, firebaseToken)
-                Log.d("Firebase2", firebaseToken)
                 iitraceViewModel.login(loginRequest)
                 observeLogin()
             }
-//            val intent = Intent(this, HomeActivity::class.java)
-//            startActivity(intent)
         }
-
-//        iitClick.setOnClickListener { v ->
-//            val popUpClass = PopUpClass()
-//            popUpClass.showPopupWindow(v)
-//        }
 
         iitClick.setOnClickListener {
             Toast.makeText(this@MainActivity, "Feature not yet available!", Toast.LENGTH_LONG).show()
@@ -137,25 +126,6 @@ class MainActivity : AppCompatActivity() {
 //        // [END fcm_runtime_enable_auto_init]
 //    }
 
-//    fun logRegToken() {
-//        // [START log_reg_token]
-//        Firebase.messaging.getToken().addOnCompleteListener { task ->
-//            if (!task.isSuccessful) {
-//                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-//                return@addOnCompleteListener
-//            }
-//
-//            // Get new FCM registration token
-//            val token = task.result
-//
-//            // Log and toast
-//            val msg = "FCM Registration token: $token"
-//            Log.d(TAG, msg)
-//            Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-//        }
-//        // [END log_reg_token]
-//    }
-
     // Declare the launcher at the top of your Activity/Fragment:
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -163,7 +133,7 @@ class MainActivity : AppCompatActivity() {
         if (isGranted) {
             // FCM SDK (and your app) can post notifications.
         } else {
-            // TODO: Inform user that that your app will not show notifications.
+            askNotificationPermission()
         }
     }
 
@@ -175,10 +145,7 @@ class MainActivity : AppCompatActivity() {
             ) {
                 // FCM SDK (and your app) can post notifications.
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
-                // TODO: display an educational UI explaining to the user the features that will be enabled
-                //       by them granting the POST_NOTIFICATION permission. This UI should provide the user
-                //       "OK" and "No thanks" buttons. If the user selects "OK," directly request the permission.
-                //       If the user selects "No thanks," allow the user to continue without notifications.
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
             } else {
                 // Directly ask for the permission
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
@@ -231,21 +198,6 @@ class MainActivity : AppCompatActivity() {
                             SessionManager.saveUserData(applicationContext, "expiry", it)
                         }
                     }
-
-                    FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-                        if (!task.isSuccessful) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                            return@OnCompleteListener
-                        }
-
-                        // Get new FCM registration token
-                        val token = task.result
-
-                        // Log and toast
-//                        val msg = getString(R.string.msg_token_fmt, token)
-                        Log.d(TAG, token)
-                        Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
-                    })
 
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)

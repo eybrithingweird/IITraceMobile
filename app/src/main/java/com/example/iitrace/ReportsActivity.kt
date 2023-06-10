@@ -71,6 +71,8 @@ class ReportsActivity : AppCompatActivity() {
 
         val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewCenter)
         pullToRefresh.setOnRefreshListener {
+            val textViewNull = findViewById<TextView>(R.id.tvNull)
+            textViewNull.visibility = View.INVISIBLE
             iitraceViewModel.history(getHeaderMap())
             observeReports()
             pullToRefresh.isRefreshing = false
@@ -100,7 +102,7 @@ class ReportsActivity : AppCompatActivity() {
                 data.data != null -> {
                     loadingBar.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@ReportsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@ReportsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.isEmpty()!!) {
                         val rvReports = findViewById<View>(R.id.recycler_view) as RecyclerView
                         val reportsArr: ArrayList<ReportsResponse> = data.data!!

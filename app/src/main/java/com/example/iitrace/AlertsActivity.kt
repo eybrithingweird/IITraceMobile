@@ -45,14 +45,13 @@ class AlertsActivity : AppCompatActivity() {
         iitraceViewModel.alerts(getHeaderMap())
         observeAlerts()
 
-        val loadingBar = findViewById<ProgressBar>(R.id.pbAlerts)
         val chevron = findViewById<ImageButton>(R.id.ibChevron)
         val c: Calendar = Calendar.getInstance()
         val timeOfDay: Int = c.get(Calendar.HOUR_OF_DAY)
 
         if (timeOfDay < 18) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.red_orange)
-        } else if (timeOfDay > 18 || timeOfDay == 18) {
+        } else {
             window.statusBarColor = ContextCompat.getColor(this, R.color.blue_purple)
         }
 
@@ -72,6 +71,8 @@ class AlertsActivity : AppCompatActivity() {
 
         val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewCenter)
         pullToRefresh.setOnRefreshListener {
+            val textViewNull = findViewById<TextView>(R.id.tvNull)
+            textViewNull.visibility = View.INVISIBLE
             iitraceViewModel.alerts(getHeaderMap())
             observeAlerts()
             pullToRefresh.isRefreshing = false
@@ -96,7 +97,7 @@ class AlertsActivity : AppCompatActivity() {
                 data.data != null -> {
                     loadingBar.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@AlertsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@AlertsActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.isEmpty()!!) {
                         val rvAlerts = findViewById<View>(R.id.recycler_view) as RecyclerView
                         val alertsArr: ArrayList<AlertsResponse> = data.data!!

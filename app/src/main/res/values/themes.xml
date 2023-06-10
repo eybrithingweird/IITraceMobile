@@ -15,7 +15,7 @@
         <item name="android:statusBarColor">@color/red_orange</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorPrimary">@color/near_black</item>
-        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:textColorSecondary">@color/lesser_white</item>
 
 <!--        <item name="android:startColor">@color/field_light</item>-->
 <!--        <item name="android:endColor">@color/field_light_shade</item>-->

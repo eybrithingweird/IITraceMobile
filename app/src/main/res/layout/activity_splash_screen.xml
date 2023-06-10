@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    app:backgroundTint="@color/white">
 
 <!--    tools:context=".view.SplashActivity"-->
 
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:id="@+id/appname"
-        android:text="IITrace"
+        android:text="@string/iitrace"
         android:fontFamily="@font/archivo_bold"
         android:textColor="@color/black"
         android:textSize="36sp"

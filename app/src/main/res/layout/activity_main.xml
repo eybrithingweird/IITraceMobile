@@ -10,10 +10,10 @@
 
     <ImageView
         android:id="@+id/imageViewSeal"
-        android:contentDescription="MSU-IIT logo"
+        android:contentDescription="@string/msu_iit_logo"
         android:layout_width="290dp"
         android:layout_height="249dp"
-        android:alpha="0.2"
+        android:alpha="0.1"
         app:layout_constraintBottom_toBottomOf="@+id/viewDeck2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:text="Sign In"
+        android:text="@string/sign_in"
         android:textSize="28sp"
         android:textColor="?android:textColorPrimary"
         android:fontFamily="@font/archivo_bold"
@@ -56,13 +56,14 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/text_input"
-        android:hint="Enter your username"
+        android:hint="@string/enter_your_username"
         android:fontFamily="@font/archivo_regular"
         android:inputType="text"
         android:paddingStart="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDeck1" />
+        app:layout_constraintTop_toBottomOf="@+id/viewDeck1"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:id="@+id/etPassword"
@@ -71,7 +72,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/text_input"
-        android:hint="Enter your password"
+        android:hint="@string/enter_your_password"
         android:fontFamily="@font/archivo_regular"
         android:inputType="textPassword"
         android:paddingStart="15dp"
@@ -79,7 +80,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/viewDeck2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
+        tools:ignore="RtlSymmetry" />
 
     <View
         android:id="@+id/viewDeck3"
@@ -136,7 +138,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No myIIT account yet? Sign up"
+        android:text="@string/no_myiit_account_yet_sign_up"
         android:textSize="15sp"
         android:textColor="#09101D"
         android:fontFamily="@font/archivo_semibold"

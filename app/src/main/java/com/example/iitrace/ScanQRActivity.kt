@@ -36,6 +36,7 @@ class ScanQRActivity : AppCompatActivity() {
     private lateinit var barcodeDetector: BarcodeDetector
     private var scannedValue = ""
     private lateinit var binding: ScanQrBinding
+    private var flagger: Boolean = false
     private val iitraceViewModel: IITraceViewModel by viewModels()
 
     @Deprecated("Deprecated in Java")
@@ -61,10 +62,19 @@ class ScanQRActivity : AppCompatActivity() {
                     loadingBar.visibility = View.INVISIBLE
                     fader.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@ScanQRActivity, "Processing successful!", Toast.LENGTH_LONG).show()
-                    if (!data?.data?.message?.isEmpty()!!) {
-                        val intent = Intent(this, QRHistoryActivity::class.java)
+                    if (data.data!!.details != null) {
+                        Toast.makeText(this@ScanQRActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+                        if (!data?.data?.message?.isEmpty()!!) {
+                            val intent = Intent(this, QRHistoryActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    } else {
+                        val msgSend = data.data!!.message
+                        Toast.makeText(this@ScanQRActivity, msgSend, Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 }
                 else -> {
@@ -99,6 +109,7 @@ class ScanQRActivity : AppCompatActivity() {
                     if (!data?.data?.building_name?.isEmpty()!!) {
                         val intent = Intent(this, QRHistoryActivity::class.java)
                         startActivity(intent)
+                        finish()
                     }
                 }
                 else -> {
@@ -132,9 +143,9 @@ class ScanQRActivity : AppCompatActivity() {
 
         val pullToRefresh = findViewById<SwipeRefreshLayout>(R.id.viewRefresher)
         pullToRefresh.setOnRefreshListener {
-            finish()
             val intent = Intent(this, ScanQRActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         val chevron = findViewById<ImageButton>(R.id.ibChevron)
@@ -212,7 +223,8 @@ class ScanQRActivity : AppCompatActivity() {
 
             override fun receiveDetections(detections: Detections<Barcode>) {
                 val barcodes = detections.detectedItems
-                if (barcodes.size() == 1) {
+                if (barcodes.size() == 1 && !flagger) {
+                    flagger = true
                     scannedValue = barcodes.valueAt(0).rawValue
 
                     //Don't forget to add this line printing value or finishing activity must run on main thread
@@ -234,12 +246,10 @@ class ScanQRActivity : AppCompatActivity() {
                                 val scanqrRequest = ScanQRRequest(room.toInt())
                                 iitraceViewModel.scans(getHeaderMap(), scanqrRequest)
                                 observeScanQR()
-                                finish()
                             } else if (qrType == "exit") {
                                 val scanEqrRequest = ScanQRERequest(room.toInt())
                                 iitraceViewModel.exitscans(getHeaderMap(), scanEqrRequest)
                                 observeScanEQR()
-                                finish()
                             } else {
                                 Toast.makeText(this@ScanQRActivity, "Invalid QR code! Try again.", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this@ScanQRActivity, HomeActivity::class.java)

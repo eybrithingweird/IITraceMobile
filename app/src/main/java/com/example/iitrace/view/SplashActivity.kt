@@ -22,6 +22,9 @@ class SplashActivity : AppCompatActivity() {
         //hide status bar
         supportActionBar?.hide()
 
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash_screen)
+
         val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
         val mode = sharedPreferences.getBoolean("value", false)
         if (mode) { //Night mode = true
@@ -29,9 +32,6 @@ class SplashActivity : AppCompatActivity() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash_screen)
 
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -48,7 +48,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             },
-            3000
+            2000
         )
     }
 }

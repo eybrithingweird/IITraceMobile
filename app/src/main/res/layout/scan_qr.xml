@@ -1,135 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    android:id="@+id/viewRefresher"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:color="@color/black">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/viewFaderScan"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/near_black"
-        android:orientation="horizontal"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        android:color="@color/black">
 
-    <ProgressBar
-        android:id="@+id/pbScanning"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/lesser_white"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/viewFaderScan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/near_black"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/viewRefresher"
-        android:layout_width="match_parent"
-        android:layout_height="600dp"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        <ProgressBar
+            android:id="@+id/pbScanning"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/lesser_white"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <SurfaceView
             android:id="@+id/cameraSurfaceView"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="600dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <View
+            android:id="@+id/viewUpper1"
+            android:layout_width="107dp"
+            android:layout_height="123dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/viewUpper1"
-        android:layout_width="107dp"
-        android:layout_height="123dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageButton
+            android:id="@+id/ibChevron"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="Chevron"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="@+id/viewUpper1"
+            app:layout_constraintEnd_toEndOf="@+id/viewUpper1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/icons8_chevron_w"
+            android:background="#00000000"
+            app:tint="?android:textColorPrimary"/>
 
-    <ImageButton
-        android:id="@+id/ibChevron"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:contentDescription="Chevron"
-        android:adjustViewBounds="true"
-        app:layout_constraintBottom_toBottomOf="@+id/viewUpper1"
-        app:layout_constraintEnd_toEndOf="@+id/viewUpper1"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/icons8_chevron_w"
-        android:background="#00000000"/>
+        <View
+            android:id="@+id/viewUpper2"
+            android:layout_width="304dp"
+            android:layout_height="123dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/viewUpper1"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/viewUpper2"
-        android:layout_width="304dp"
-        android:layout_height="123dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/viewUpper1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvScanningTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_bold"
+            android:text="Scanning..."
+            android:textSize="30sp"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintBottom_toBottomOf="@+id/viewUpper2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvScanningTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/archivo_bold"
-        android:text="Scanning..."
-        android:textSize="30sp"
-        android:textColor="@color/lesser_white"
-        app:layout_constraintBottom_toBottomOf="@+id/viewUpper2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <View
+            android:id="@+id/viewCenter"
+            android:layout_width="match_parent"
+            android:layout_height="609dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />
 
-    <View
-        android:id="@+id/viewCenter"
-        android:layout_width="match_parent"
-        android:layout_height="609dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />
+        <TextView
+            android:id="@+id/tvScanningNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/archivo_regular"
+            android:text="@string/if_the_camera_view_does_not_load_after_granting_permissions_try_pulling_from_the_top_to_refresh_this_screen"
+            android:textColor="@color/lesser_white"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvScanningNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/archivo_regular"
-        android:text="If the camera view does not load after granting permissions, try pulling to refresh this screen."
-        android:textColor="@color/lesser_white"
-        android:gravity="center"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!--    <FrameLayout-->
+    <!--        android:layout_width="280dp"-->
+    <!--        android:layout_height="280dp"-->
+    <!--        android:background="@drawable/field_scan"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
 
-<!--    <FrameLayout-->
-<!--        android:layout_width="280dp"-->
-<!--        android:layout_height="280dp"-->
-<!--        android:background="@drawable/field_scan"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+        <!--<View
+            android:id="@+id/barcode_line"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginTop="20dp"
+            android:background="#6574fe"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />-->
 
-    <!--<View
-        android:id="@+id/barcode_line"
-        android:layout_width="match_parent"
-        android:layout_height="6dp"
-        android:layout_marginTop="20dp"
-        android:background="#6574fe"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScanningTitle" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

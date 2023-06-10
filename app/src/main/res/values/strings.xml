@@ -4,4 +4,29 @@
         By submitting a report, you acknowledge and agree that you are providing truthful and accurate medical information. The act of submitting a report implies your responsibility to ensure the integrity and authenticity of the information provided. Fabricating, exaggerating, or misrepresenting facts in your report is strictly prohibited and may result in serious consequences. We strongly encourage you to exercise utmost honesty, diligence, and ethical conduct when submitting any report. Remember that your reports play a crucial role in maintaining trust, promoting transparency, and facilitating effective decision-making.
     </string>
     <string name="warning_agree">I acknowledge and agree to the above statement</string>
+    <string name="msu_iit_logo">MSU-IIT logo</string>
+    <string name="sign_in">Sign In</string>
+    <string name="enter_your_username">Enter your username</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="no_myiit_account_yet_sign_up">No myIIT account yet? Sign up</string>
+    <string name="iitrace">IITrace</string>
+    <string name="chevron">Chevron</string>
+    <string name="alert_history">Alert history</string>
+    <string name="no_alert_history_found_n_come_back_later_when_you_receive_a_notification">No alert history found. \n Come back later when you receive a notification!</string>
+    <string name="sun_and_clouds">Sun and clouds</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="history">History</string>
+    <string name="alerts">Alerts</string>
+    <string name="alert_history_desc">Alert history</string>
+    <string name="qr_history_desc">QR History</string>
+    <string name="scan_qr_desc">Scan QR</string>
+    <string name="icon">icon</string>
+    <string name="reports">Reports</string>
+    <string name="reports_desc">Reports</string>
+    <string name="settings">Settings</string>
+    <string name="settings_desc">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="sign_out">Sign out</string>
+    <string name="clouds_or_stars">Clouds or stars</string>
+    <string name="if_the_camera_view_does_not_load_after_granting_permissions_try_pulling_from_the_top_to_refresh_this_screen">If the camera view does not load after granting permissions, try pulling from the top to refresh this screen.</string>
 </resources>

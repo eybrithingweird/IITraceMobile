@@ -15,7 +15,7 @@
     <color name="red_maroon">#FFA30000</color>
     <color name="blue_purple">#FF201C4E</color>
     <color name="near_black">#09101D</color>
-    <color name="lesser_white">#FFcbbaba</color>
+    <color name="lesser_white">#baabab</color>
     <color name="red_orange">#c9550c</color>
 
     <!--Square Colors-->
@@ -38,8 +38,8 @@
 
     <!--Gradient colors-->
 
-    <color name="grad_red">#E91212</color>
-    <color name="grad_yellow">#FEC83C</color>
+    <color name="grad_red">#bf0d0d</color>
+    <color name="grad_yellow">#c79d2e</color>
 
     <color name="grad_blue">#181630</color>
     <color name="grad_purple">#2b0f4e</color>

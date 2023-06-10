@@ -70,18 +70,21 @@ class QRListAdapter (
         val timeEntry: String
 
         if (history.date_exited == null){
-            timeExit = "null"
+            timeExit = "---"
         } else {
 //            val temp = sdf.format(history.date_exited)
 //            timeExit = temp.toString()
 //            val dateTimeChange = Date(history.date_exited - 28800 * 1000)
 //            Log.d("check", history.date_exited.toString())
             var hour = Integer.parseInt(format("HH", history.date_exited) as String)
-            if (hour < 12) {
-                hour += 16
-            } else {
-                hour -= 8
-            }
+//            if (hour < 12) {
+//                hour += 16
+//
+//                if (hour > 23) {
+//                    hour -= 24
+//                }
+//            }
+
             val minutes = Integer.parseInt(format("mm", history.date_exited) as String)
             val seconds = Integer.parseInt(format("ss", history.date_exited) as String)
 
@@ -117,7 +120,7 @@ class QRListAdapter (
         }
 
         if (history.date_created == null){
-            timeEntry = "null"
+            timeEntry = "---"
         } else {
 //            val temp = sdf.format(history.date_created)
 //            timeEntry = temp.toString()
@@ -133,15 +136,16 @@ class QRListAdapter (
 
         dateview.text = "$dayOfTheWeek, $monthString $day"
         yearview.text = year
-        bldgview.text = history.building_name
         roomview.text = history.room_name
         timeEntryView.text = "Entry time: $timeEntry"
         timeExitView.text = "Exit time: $timeExit"
 
-        if (history.building_name == "CCS" || history.building_name.uppercase().contains("CCS")) {
+        if (history.building_name == "College of Computer Studies") {
             image.setImageResource(R.drawable.ccs_logo)
+            bldgview.text = "CCS"
         } else {
             image.setImageResource(R.drawable.seal_02)
+            bldgview.text = history.building_name
         }
     }
 
