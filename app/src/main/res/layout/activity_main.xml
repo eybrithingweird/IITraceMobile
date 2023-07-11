@@ -13,7 +13,7 @@
         android:contentDescription="@string/msu_iit_logo"
         android:layout_width="290dp"
         android:layout_height="249dp"
-        android:alpha="0.1"
+        android:alpha="0.15"
         app:layout_constraintBottom_toBottomOf="@+id/viewDeck2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,39 +49,98 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDeck1"> </View>
 
-    <EditText
-        android:id="@+id/etUsername"
+<!--    <EditText-->
+<!--        android:id="@+id/etUsername"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:background="@drawable/text_input"-->
+<!--        android:hint="@string/enter_your_username"-->
+<!--        android:fontFamily="@font/archivo_regular"-->
+<!--        android:inputType="text"-->
+<!--        android:paddingStart="15dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/viewDeck1"-->
+<!--        tools:ignore="RtlSymmetry" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
+        android:id="@+id/etUsernameLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/text_input"
-        android:hint="@string/enter_your_username"
-        android:fontFamily="@font/archivo_regular"
-        android:inputType="text"
-        android:paddingStart="15dp"
+        app:passwordToggleEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDeck1"
-        tools:ignore="RtlSymmetry" />
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        tools:ignore="RtlSymmetry"
+        app:boxStrokeWidth="2dp"
+        app:boxStrokeWidthFocused="2dp" >
 
-    <EditText
-        android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_regular"
+            android:hint="@string/enter_your_username"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/etPassword"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:background="@drawable/text_input"-->
+<!--        android:hint="@string/enter_your_password"-->
+<!--        android:fontFamily="@font/archivo_regular"-->
+<!--        android:inputType="textPassword"-->
+<!--        android:paddingStart="15dp"-->
+<!--        app:passwordToggleEnabled="true"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/viewDeck2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/etUsername"-->
+<!--        tools:ignore="RtlSymmetry" />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
+        android:id="@+id/etPasswordLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/text_input"
-        android:hint="@string/enter_your_password"
-        android:fontFamily="@font/archivo_regular"
-        android:inputType="textPassword"
-        android:paddingStart="15dp"
         app:passwordToggleEnabled="true"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopStart="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewDeck2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsernameLayout"
+        tools:ignore="RtlSymmetry" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/archivo_regular"
+            android:hint="@string/enter_your_password"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <View
         android:id="@+id/viewDeck3"
@@ -97,6 +156,7 @@
         android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/button_gold"
         android:text="Continue"
         android:textSize="15sp"
@@ -127,7 +187,7 @@
         android:background="@drawable/button_red"
         android:text="Continue with myIIT"
         android:textSize="15sp"
-        android:textColor="#FFFFFFFF"
+        android:textColor="@color/lesser_white"
         android:fontFamily="@font/archivo_semibold"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +200,7 @@
         android:layout_height="wrap_content"
         android:text="@string/no_myiit_account_yet_sign_up"
         android:textSize="15sp"
-        android:textColor="#09101D"
+        android:textColor="?android:textColorPrimary"
         android:fontFamily="@font/archivo_semibold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

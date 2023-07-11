@@ -107,6 +107,7 @@ class HomeActivity : AppCompatActivity() {
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange_d)
 
+            survey.backgroundTintList = ContextCompat.getColorStateList(this, R.color.amber)
             window.statusBarColor = ContextCompat.getColor(this, R.color.grad_red)
         }
 
@@ -118,6 +119,7 @@ class HomeActivity : AppCompatActivity() {
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_redorange)
 
+            survey.backgroundTintList = ContextCompat.getColorStateList(this, R.color.amber)
             window.statusBarColor = ContextCompat.getColor(this, R.color.grad_red)
         }
 
@@ -129,7 +131,8 @@ class HomeActivity : AppCompatActivity() {
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple_d)
 
-            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_purple)
+            survey.backgroundTintList = ContextCompat.getColorStateList(this, R.color.lavender)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_blue)
         }
 
         fun dayModeSetD() {
@@ -140,7 +143,8 @@ class HomeActivity : AppCompatActivity() {
             settings.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
             signOut.backgroundTintList = ContextCompat.getColorStateList(this, R.color.square_bluepurple)
 
-            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_purple)
+            survey.backgroundTintList = ContextCompat.getColorStateList(this, R.color.lavender)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.grad_blue)
         }
 
         if (timeOfDay < 18) {
@@ -149,13 +153,6 @@ class HomeActivity : AppCompatActivity() {
                 Configuration.UI_MODE_NIGHT_NO -> dayModeSet()
                 Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSet()
             }
-
-            scanQR.setBackgroundResource(R.drawable.button_square_red)
-            qrHistory.setBackgroundResource(R.drawable.button_square_red)
-            alertHistory.setBackgroundResource(R.drawable.button_square_redorange)
-            reports.setBackgroundResource(R.drawable.button_square_redorange)
-            settings.setBackgroundResource(R.drawable.button_square_orange)
-            signOut.setBackgroundResource(R.drawable.button_square_orange)
 
             viewBanner.setBackgroundResource(R.drawable.grad_redyellow)
             viewBottom.setBackgroundResource(R.color.grad_yellow)
@@ -169,13 +166,6 @@ class HomeActivity : AppCompatActivity() {
                 Configuration.UI_MODE_NIGHT_NO -> dayModeSetD()
                 Configuration.UI_MODE_NIGHT_UNDEFINED -> dayModeSetD()
             }
-
-            scanQR.setBackgroundResource(R.drawable.button_square_blue)
-            qrHistory.setBackgroundResource(R.drawable.button_square_blue)
-            alertHistory.setBackgroundResource(R.drawable.button_square_bluepurple)
-            reports.setBackgroundResource(R.drawable.button_square_bluepurple)
-            settings.setBackgroundResource(R.drawable.button_square_purple)
-            signOut.setBackgroundResource(R.drawable.button_square_purple)
 
             viewBanner.setBackgroundResource(R.drawable.grad_bluepurple)
             viewBottom.setBackgroundResource(R.color.grad_purple)

@@ -10,8 +10,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.WindowInsets
 import android.view.WindowManager
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import com.example.iitrace.R
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,10 +29,13 @@ class SplashActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("IITrace", Context.MODE_PRIVATE)
         val mode = sharedPreferences.getBoolean("value", false)
+        val appname = findViewById<TextView>(R.id.appname)
         if (mode) { //Night mode = true
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            appname.setTextColor(ContextCompat.getColor(this, R.color.white))
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            appname.setTextColor(ContextCompat.getColor(this, R.color.near_black))
         }
 
         @Suppress("DEPRECATION")

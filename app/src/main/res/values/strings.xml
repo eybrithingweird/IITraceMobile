@@ -29,4 +29,6 @@
     <string name="sign_out">Sign out</string>
     <string name="clouds_or_stars">Clouds or stars</string>
     <string name="if_the_camera_view_does_not_load_after_granting_permissions_try_pulling_from_the_top_to_refresh_this_screen">If the camera view does not load after granting permissions, try pulling from the top to refresh this screen.</string>
+    <string name="transparent_field">Transparent field</string>
+    <string name="night_mode_disabled">Night mode disabled</string>
 </resources>

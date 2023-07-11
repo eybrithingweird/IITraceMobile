@@ -2,20 +2,22 @@
     <!-- Base application theme. -->
     <style name="Theme.IITrace" parent="Theme.MaterialComponents.DayNight">
         <!-- Primary brand color. -->
-<!--        <item name="android:background">@color/near_black</item>-->
+<!--        <item name="android:background">@color/lesser_white</item>-->
 
-        <item name="colorPrimary">@color/yellow_gold</item>
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/black</item>-->
+<!--        <item name="colorPrimary">@color/white</item>-->
+<!--        <item name="colorPrimaryVariant">@color/white</item>-->
+<!--        <item name="colorOnPrimary">@color/white</item>-->
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/red_maroon</item>
 <!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
 <!--        <item name="colorOnSecondary">@color/black</item>-->
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/blue_purple</item>
+        <item name="android:statusBarColor" >@color/grad_yellow</item>
         <!-- Customize your theme here. -->
         <item name="android:textColorPrimary">@color/lesser_white</item>
         <item name="android:textColorSecondary">@color/near_black</item>
+
+        <item name="textInputStyle">@style/Widget.AppTheme.TextInputLayout</item>
 
 <!--        <item name="android:startColor">@color/field_dark</item>-->
 <!--        <item name="android:endColor">@color/field_dark_shade</item>-->
@@ -72,5 +74,14 @@
 
     <style name="SquareButton.Orange" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/square_orange</item>
+    </style>
+
+    <!--TEXT INPUT LAYOUT-->
+    <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
+        <item name="colorPrimary">@color/lesser_white</item>
+    </style>
+
+    <style name="Widget.AppTheme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.Dense">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined</item>
     </style>
 </resources>

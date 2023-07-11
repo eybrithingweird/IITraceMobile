@@ -121,7 +121,7 @@ class ReportsCreateActivity : AppCompatActivity() {
                 data.data != null -> {
                     loadingBar.visibility = View.INVISIBLE
 
-                    Toast.makeText(this@ReportsCreateActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@ReportsCreateActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     val spinnerView = findViewById<Spinner>(com.example.iitrace.R.id.spinnerDrpdwn)
                     val arrayList = data.data!!.sortedBy { it.name }
 //                    textViewNull.visibility = View.VISIBLE
@@ -172,7 +172,7 @@ class ReportsCreateActivity : AppCompatActivity() {
                     fader.visibility = View.INVISIBLE
                     bttn.visibility = View.VISIBLE
 
-                    Toast.makeText(this@ReportsCreateActivity, "Processing successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@ReportsCreateActivity, "Processing successful!", Toast.LENGTH_LONG).show()
                     val intent = Intent(this, ReportsActivity::class.java)
                     startActivity(intent)
                     finish()

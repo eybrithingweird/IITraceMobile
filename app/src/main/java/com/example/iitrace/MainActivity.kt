@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
                     myiitButton.visibility = View.VISIBLE
                     getWindow().clearFlags( WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE )
 
-                    Toast.makeText(this@MainActivity, "Login successful!", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this@MainActivity, "Login successful!", Toast.LENGTH_LONG).show()
                     if (!data?.data?.token.isNullOrEmpty()) {
                         data?.data?.token?.let {
                             SessionManager.saveAuthToken(applicationContext, it)

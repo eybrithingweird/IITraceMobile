@@ -140,10 +140,11 @@ class QRListAdapter (
         timeEntryView.text = "Entry time: $timeEntry"
         timeExitView.text = "Exit time: $timeExit"
 
-        if (history.building_name == "College of Computer Studies") {
+        if (history.building_name == "College of Computer Studies" || history.building_name == "CCS") {
             image.setImageResource(R.drawable.ccs_logo)
             bldgview.text = "CCS"
         } else {
+//            val arr: List<String> = history.building_name.split("\\s".toRegex())
             image.setImageResource(R.drawable.seal_02)
             bldgview.text = history.building_name
         }

@@ -15,8 +15,10 @@
     <color name="red_maroon">#FFA30000</color>
     <color name="blue_purple">#FF201C4E</color>
     <color name="near_black">#09101D</color>
-    <color name="lesser_white">#baabab</color>
+    <color name="lesser_white">#DDFFFFFF</color>
     <color name="red_orange">#c9550c</color>
+    <color name="amber">#fb923c</color>
+    <color name="lavender">#7a5691</color>
 
     <!--Square Colors-->
 

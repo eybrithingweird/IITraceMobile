@@ -33,6 +33,7 @@
                 android:layout_height="319dp"
                 android:contentDescription="@string/sun_and_clouds"
                 android:scaleType="centerCrop"
+                android:backgroundTint="#00000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +58,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginTop="0dp"
                     app:srcCompat="@drawable/icons8_profile"
-                    app:tint="@color/white"
+                    app:tint="@color/lesser_white"
                     android:contentDescription="@string/icon" />
 
                 <TextView
@@ -69,7 +70,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginStart="4dp"
                     android:fontFamily="@font/archivo_regular"
-                    android:textColor="@color/white"
+                    android:textColor="@color/lesser_white"
                     android:gravity="center"
                     android:textSize="18sp" />
 
@@ -304,7 +305,7 @@
                     android:background="@drawable/button_theme"
                     android:text="Show me to the survey page"
                     android:textSize="15sp"
-                    android:textColor="#FF000000"
+                    android:textColor="?android:textColorPrimary"
                     android:fontFamily="@font/archivo_semibold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />

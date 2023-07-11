@@ -23,7 +23,8 @@
         app:layout_constraintEnd_toEndOf="@+id/viewUpper1"
         app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/icons8_chevron"
-        android:background="#00000000"/>
+        android:background="#00000000"
+        app:tint="?android:textColorPrimary"/>
 
     <View
         android:id="@+id/viewUpper2"

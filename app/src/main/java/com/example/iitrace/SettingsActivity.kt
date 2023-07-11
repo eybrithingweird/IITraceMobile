@@ -41,13 +41,11 @@ class SettingsActivity : AppCompatActivity() {
 
         fun nightModeSet() {
             statusMode.text = "Night mode enabled"
-            chevron.setImageResource(R.drawable.icons8_chevron_w)
             btn.isChecked = true
         }
 
         fun dayModeSet() {
             statusMode.text = "Night mode disabled"
-            chevron.setImageResource(R.drawable.icons8_chevron)
             btn.isChecked = false
         }
 

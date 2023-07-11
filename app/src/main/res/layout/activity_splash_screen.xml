@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:backgroundTint="@color/white">
+    app:backgroundTint="?android:textColorSecondary">
 
 <!--    tools:context=".view.SplashActivity"-->
 
@@ -16,7 +16,7 @@
         android:id="@+id/appname"
         android:text="@string/iitrace"
         android:fontFamily="@font/archivo_bold"
-        android:textColor="@color/black"
+        android:textColor="?android:textColorPrimary"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
